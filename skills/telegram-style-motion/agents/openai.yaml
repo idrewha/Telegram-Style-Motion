@@ -1,0 +1,4 @@
+interface:
+  display_name: "Telegram Style Motion"
+  short_description: "iOS promo videos with frosted taps and camera motion"
+  default_prompt: "Use $telegram-style-motion to create a promo video from my iOS app, preserving its native motion and using the V4 camera and tap preset."

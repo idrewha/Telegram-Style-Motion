@@ -1,0 +1,12 @@
+# Local experience, never shared between users
+**/learning/
+# Python/runtime artifacts
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+# Local capture/output files
+*.mp4
+*.mov
+*.mp3
+*.wav
