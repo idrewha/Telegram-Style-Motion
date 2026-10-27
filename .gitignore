@@ -10,3 +10,6 @@ __pycache__/
 *.mov
 *.mp3
 *.wav
+
+# Published README demonstration
+!docs/demo/bluetooth-payment-v4.mp4
