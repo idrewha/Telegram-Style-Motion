@@ -80,11 +80,11 @@ The reference supports this motion profile, not a unique spring engine or exact 
 
 ## Capture and registration
 
-- Solve spatial and temporal registration separately. Choose the semantic target (for example, the amount/name block in a full-width account row), log its visible bounds and the control's hit bounds, and convert through a consistent layer tree into window points. Use the same screen-to-bezel-to-camera transform for the phone and indicator.
-- Contact is touch-down, not the later touchUpInside callback or first changed screen. A Debug driver can highlight/send touchDown at contact and run the existing touchUpInside handler on release; the payment example uses a 120 ms press. This reuses handlers, not physical touch delivery or end-to-end hit testing.
+- Solve spatial and temporal registration separately. Choose the semantic target (for example, the title block in a full-width content row), log its visible bounds and the control's hit bounds, and convert through a consistent layer tree into window points. Use the same screen-to-bezel-to-camera transform for the phone and indicator.
+- Contact is touch-down, not the later touchUpInside callback or first changed screen. A Debug driver can highlight/send touchDown at contact and run the existing touchUpInside handler on release. Log the actual press duration separately. This reuses handlers, not physical touch delivery or end-to-end hit testing.
 - Do not trust file birth time or one global offset for a multi-action recording. Normalize a preserved copy to the output frame rate, calibrate contacts against encoded frames, and use those same frames for marker removal, composition and audit. Per-contact markers are preferred when clock drift is observed; a visually identified response is a fallback with stated uncertainty.
-- Before implementing or correcting clicks/timing, read [registration and timing](references/registration.md). It covers coordinate conversion, frame anchors, mapping limits, and the source/final-frame comparison that caught the payment clip's drift.
-- Log the visible success reveal separately. Align audio to its encoded onset plus the authored delay (BLE: 0.14 s). A native callback or extrapolation beyond the last contact is not independently verified visible-reveal timing. Derive the ending from captured completion/hold frames rather than extrapolating a drifting clock or silently cloning the final frame.
+- Before implementing or correcting clicks/timing, read [registration and timing](references/registration.md). It covers coordinate conversion, frame anchors, mapping limits, and source/final-frame comparison for diagnosing clock drift.
+- Log the visible success reveal separately. Align audio to its encoded onset plus the authored delay. A native callback or extrapolation beyond the last contact is not independently verified visible-reveal timing. Derive the ending from captured completion/hold frames rather than extrapolating a drifting clock or silently cloning the final frame.
 
 ## Existing implementations
 
@@ -92,8 +92,8 @@ Reuse the bundled compositor through `scripts/render.py` rather than making anot
 divergent copy. Its input must already be normalized and calibrated; it does not
 record an app, detect sync markers or infer contact times. Read [rendering](references/rendering.md).
 
-- Historical BLE integration and bundled compositor provenance: [BLE integration](references/ble.md).
-- Historical payment adapter, per-contact calibration, diagnostic artifacts and observed limitations: [payment integration](references/payment.md). Consult this for multi-step error/account/retry clips.
+- Bundled compositor provenance and license: [compositor provenance](references/compositor-provenance.md).
+- Per-contact calibration and diagnostic guidance: [registration and timing](references/registration.md).
 
 Preserve original footage and native logs alongside the normalized/clean source, calibrated timeline, camera, render settings, background plate, contact audit and final MP4.
 
@@ -103,6 +103,6 @@ Run syntax checks for changed scripts and appropriate build/logic checks for app
 
 The user reviews UI: do not run UI tests, drive UI for verification or take verification screenshots without a separate request. Recording an explicitly requested video and inspecting its recorded frames are media task work; do not add an unsolicited live UI verification pass.
 
-When only existing footage can be edited, a short held frame on a safe static state is acceptable if disclosed. Shift taps, camera, audio/events and trim bounds consistently. Do not slow the main light transition or hide an incomplete capture with a cloned tail.
+When only existing footage can be edited, a short held frame on a safe static state is acceptable if disclosed. Shift taps, camera, audio/events and trim bounds consistently. Do not slow the main native transition or hide an incomplete capture with a cloned tail.
 
 Never install or use public localhost tunnels or SSH forwarding for this workflow. Use normal HTTPS/API access and local files; stop dependent retries on evidence of corporate DNS/TLS/proxy blocking.

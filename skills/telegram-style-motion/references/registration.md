@@ -4,7 +4,7 @@ Use this when implementing tap capture, diagnosing missed targets, or changing c
 
 ## 1. Choose and measure the visible target
 
-A full-width row's geometric center can be empty space. Anchor an account-selection tap to its amount/name stack or another meaningful visible subview, while retaining the containing button's hit bounds. Prefer stable accessibility IDs or an explicit capture anchor over fragile subview indexes.
+A full-width row's geometric center can be empty space. Anchor a content-selection tap to its visible title block or another meaningful visible subview, while retaining the containing button's hit bounds. Prefer stable accessibility IDs or an explicit capture anchor over fragile subview indexes.
 
 Wait for native readiness: enabled, interactive, visible, attached to a window, completed presentation, and settled geometry/opacity including animated ancestors. For a static contact, compare window-space geometry across consecutive display frames. Merely comparing a child's local frame to its model can miss an animated parent. Reset the reading timer when readiness is lost; time out with a recorded error instead of pressing blindly.
 
@@ -43,7 +43,7 @@ Use the exact same transform and camera time as the phone image. Account for cro
 
 ## 3. Separate contact from release
 
-In a native Debug driver, log/show contact and highlight the control at touch-down; dispatch the existing action at its normal trigger. For a touchUpInside action, a short press such as the payment example's 120 ms leaves contact on the original UI before the reaction replaces or moves it. Log release separately. Do not delay controls whose actual behavior fires on touch-down or substitute this for gesture-driven interactions.
+In a native Debug driver, log/show contact and highlight the control at touch-down; dispatch the existing action at its normal trigger. For a touchUpInside action, a short, explicitly logged press leaves contact on the original UI before the reaction replaces or moves it. Log release separately. Do not delay controls whose actual behavior fires on touch-down or substitute this for gesture-driven interactions.
 
 `sendActions` is native handler reuse, not a UITouch injection or a UI test. Keep the driver gated by a Debug launch flag, with one pass, timeout and cleanup. Restore capture-only appearance/status-bar overrides, terminate capture mode and relaunch without autoplay.
 
@@ -58,7 +58,7 @@ ffmpeg -i rec.mp4 -vf 'fps=60:start_time=0' -an \
 
 This duplicates/drops frames to obtain CFR; it does not fix disagreement with the app clock. Verify the normalized stream's initial PTS and frame spacing before treating `frameIndex / fps` as time. Use this same frame sequence for detection, cleaning, composition and audits. Do not correlate raw-VFR frame indexes with a differently decoded/fps-filtered sequence. [FFmpeg fps documentation](https://ffmpeg.org/ffmpeg-filters.html#fps).
 
-A startup sync pulse before the trim anchors the beginning. For multi-action drift, put a brief unique-color patch into the same native transaction as each contact. The payment example uses 100 ms magenta pulses in a dedicated ROI; its coordinates/color threshold are examples, not defaults for other screens. Choose a region that cannot be mistaken for app content; use distinct IDs/colors when ordering is ambiguous. Log ROI, expected pulse sequence and times.
+A startup sync pulse before the trim anchors the beginning. For multi-action drift, put a brief unique-color patch into the same native transaction as each contact. Choose pulse duration, color, ROI and detection thresholds for the actual recording. Choose a region that cannot be mistaken for app content; use distinct IDs/colors when ordering is ambiguous. Log ROI, expected pulse sequence and times.
 
 Detect pulse first/last frame indexes, not file birth time. Require the expected count/order and strictly increasing native/encoded times. If a pulse is absent, merged or ambiguous, stop that calibration and correct/re-record it; do not silently substitute old offsets. First-visible-frame timing has frame quantization and capture latency; at 60 fps the sampling interval is 16.7 ms, not proof of sub-frame input accuracy.
 

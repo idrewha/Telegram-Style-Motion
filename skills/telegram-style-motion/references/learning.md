@@ -58,7 +58,7 @@ Outcomes: completed / partial / failed. Feedback: pending / approved / changes_r
 After recording, consider whether the new evidence changes a decision in this skill. If it does, make a focused local edit and validate it; otherwise leave the instructions alone. Do not churn rules merely because the counter increased.
 
 - Repeated independent evidence can justify a general rule. A single demonstrated correctness bug can justify a narrow fix when its mechanism and relevant scope are established. Duplicate reports, multiple takes of one task, and repeated model assertions are not independent support.
-- Keep explicit preferences scoped. For example, the current payment clip's visible balances, longer holds and amber backdrop do not require all future promos to use that scenario or palette.
+- Keep explicit preferences scoped. For example, one clip's reading holds and backdrop do not require all future promos to use that scenario or palette.
 - Keep hypotheses labeled and out of normative instructions until supported. If new evidence contradicts an old lesson, correct or retire it rather than accumulating conflicting rules. Preserve the evidence/report correction.
 - Put general decision changes in SKILL.md; detailed mechanisms in the relevant reference; project-specific examples in the integration reference. Merge with existing guidance and prune duplication. Add a script only when reusable, testable mechanics justify it.
 - Validate changed skill metadata/links, run meaningful checks for changed helpers, and report the actual improvement and its evidence in the task result. Do not add live UI checks or new media captures solely to feed this loop.

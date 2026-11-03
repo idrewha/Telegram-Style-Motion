@@ -383,7 +383,7 @@ def ring_shape(age):
 def reference_ring_shape(relative):
     """Measured Telegram profile; returns outer radius, envelope and inner ratio.
 
-    Local extension keeps the legacy profile available for existing BLE exports.
+    Local extension keeps the legacy profile available for existing exports.
     Contact is zero; values describe observed motion, not inferred spring constants.
     """
     if relative < -0.37 or relative > 0.28:

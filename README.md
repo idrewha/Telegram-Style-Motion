@@ -11,14 +11,14 @@
 
 ## Демонстрация
 
-Пример результата: проморолик экрана оплаты с выбором счёта и повторной оплатой.
+Пример результата: проморолик AI-поиска в приложении Kino.
 Реальная запись приложения дополнена рамкой устройства, движением камеры
 и матовыми индикаторами нажатий по пресету V4.
 
-[![Демонстрация Telegram Style Motion — нажмите, чтобы открыть полный ролик](docs/demo/bluetooth-payment-v4.gif)](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/bluetooth-payment-v4.mp4)
+[![Демонстрация Telegram Style Motion — нажмите, чтобы открыть полный ролик](docs/demo/Kino-AI-refined.gif)](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/Kino-AI-refined.mp4)
 
-[Смотреть полный ролик со звуком](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/bluetooth-payment-v4.mp4)
-— 15,4 с, 1920×1920, 60 fps. Выше — уменьшенное анимированное превью;
+[Смотреть полный ролик](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/Kino-AI-refined.mp4)
+— 29,45 с, 1920×1920, 60 fps, без звука. Выше — уменьшенное анимированное превью;
 оригинальный MP4 доступен по ссылке пользователям с доступом к репозиторию.
 
 ## Установка в Codex
@@ -55,7 +55,7 @@ Codex. Формат и обнаружение скиллов описаны в
 
 ```text
 Используй $telegram-style-motion. Сделай проморолик моего iOS-приложения:
-открыть экран оплаты, выбрать счёт, выполнить перевод и показать результат.
+открыть поиск, показать AI-поиск и найденные произведения.
 Сохрани нативную анимацию, используй пресет V4 и квадратный формат.
 ```
 

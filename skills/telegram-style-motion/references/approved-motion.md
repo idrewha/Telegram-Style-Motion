@@ -1,6 +1,6 @@
 # Owner-approved V4 motion preset
 
-The owner explicitly approved the Bluetooth V4 result on 2026-10-27, including its
+The owner explicitly approved the V4 motion preset on 2026-10-27, including its
 timing and spring-like dynamics, and asked to reuse that feel in future clips.
 Use this authored preset as the starting point unless a current request or content
 requires another rhythm. Earlier 2.0 / 2.4 s holds remain a gentler option; they are
@@ -45,19 +45,15 @@ or map them blindly to a platform spring API.
 Use `camera_progress(elapsed, duration=.75)` and `tap_state(relativeToContact)` from
 the helper, or port the same curves and compare sampled outputs. A different
 implementation is acceptable if it preserves the observed shape and timing.
-The maintained BLE compositor's `curve: "reference"` and `--tap-profile reference`
+The bundled compositor's `curve: "reference"` and `--tap-profile reference`
 matched this portable preset in sampled parity checks when it was recorded.
 
 ## Keep the scope clear
 
-V4's cold contrasting palette is a useful example, not a requirement for every app.
-The Bluetooth retry's 1.45 s narrowing belongs to its native payment state machine;
-it must remain before ascent, but it is not a generic camera/tap spring parameter.
-Preserve native app transitions and create pacing changes in reading holds.
+Palette and native phase durations belong to the actual application and scenario;
+they are not generic camera/tap spring parameters. Preserve native app transitions
+and create pacing changes in reading holds.
 
-Historical owner-local evidence (not distributed with this skill):
-`bluetooth-payment-v4.mp4`, and `take-09/camera.json`, `render-settings.json`,
-`camera-poses.png`, `final-tap-phases.png`, `compression-before-launch.png`,
-`validation.json`. The compositor can evolve; compare against the saved
-preset before claiming its current `reference` mode still reproduces the approved
-version. Do not depend only on an external checkout path for the curve definition.
+The compositor can evolve; compare against the saved preset before claiming its
+current `reference` mode still reproduces the approved version. Do not depend only
+on an external checkout path for the curve definition.

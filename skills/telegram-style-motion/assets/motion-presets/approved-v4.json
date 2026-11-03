@@ -1,7 +1,7 @@
 {
   "id": "owner-approved-v4",
   "approvedOn": "2026-10-27",
-  "evidence": "Owner approved Bluetooth payment V4 timing and spring-like motion and requested future reuse.",
+  "evidence": "Owner approved V4 timing and spring-like motion and requested future reuse.",
   "reading": {"ordinarySeconds": 1.2, "informationRichSeconds": 1.6, "finalSettledSeconds": 2.5},
   "camera": {
     "durationSeconds": 0.75,

@@ -4,7 +4,7 @@ Read this before rendering on another machine. Paths in the commands below are
 user-supplied inputs, not locations assumed to exist. Run commands from the installed
 skill directory, using Python 3.10+ with `requirements.txt` installed and FFmpeg/ffprobe
 on PATH. Capture requires a real app project, macOS/Xcode and Simulator; rendering
-existing footage does not require the original BLE or payment projects.
+existing footage does not require another application checkout.
 
 ## Prepare a calibrated composition input
 
@@ -94,8 +94,8 @@ frames from the actual output. See [camera motion](camera-motion.md).
 The renderer intentionally exports silent video. Do not discard supplied app sound
 without explanation: align it in a separate FFmpeg mux step after measuring visible
 onset on the encoded frames. Audio delay is relative to the **trimmed output clock**;
-subtract `--start` from a source-video timestamp. The historical BLE 0.14 s delay is
-scenario-specific. Preserve authored leading silence and distinguish file placement
+subtract `--start` from a source-video timestamp. Choose any authored delay for the
+actual scenario. Preserve authored leading silence and distinguish file placement
 from audible onset. Do not add unrelated music.
 
 Check output metadata, expected frame count and full decode, for example:
