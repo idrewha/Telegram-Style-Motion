@@ -122,8 +122,8 @@ The newest50 of100 downloaded references have completed dense whole-source visua
 
 ## Text and gesture layers
 
-For «Обычный» и «Эмоциональный» glyph reveals and portable native/web adapters, read
-[«Обычный» и «Эмоциональный» text](text-motion.md). For measured moving frosted rings and
+For «Normal» и «Emotional» glyph reveals and portable native/web adapters, read
+[«Normal» и «Emotional» text](text-motion.md). For measured moving frosted rings and
 the approved compact-swipe-v1 starting preset, read [gesture indicators](gestures.md).
 The renderer supports sprite, glint and swipe layers; editorial text, Studio and audio use the same package through [the unified plan](remotion.md).
 

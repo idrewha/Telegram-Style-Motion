@@ -1,15 +1,15 @@
-/** Independent renderer-neutral implementation of the documented Gentle/Emotional formulas.
+/** Independent renderer-neutral implementation of the documented Normal/Emotional formulas.
  * Provenance and the adapted promo clock: references/text-motion.md.
  * Times in seconds; distances in source pixels divided by pixelsPerUnit.
  */
 const NATURAL = Object.freeze({ opacity: 1, y: 0, scaleY: 1, rotation: 0, blur: 0 });
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 
-export function timing(style = 'gentle', options = {}) {
-  if (!['gentle', 'emotional'].includes(style)) throw new RangeError('Unknown Gentle/Emotional style');
+export function timing(style = 'normal', options = {}) {
+  if (!['normal', 'emotional'].includes(style)) throw new RangeError('Unknown Normal/Emotional style');
   const preset = options.preset ?? 'promo';
   if (!['promo', 'source'].includes(preset)) throw new RangeError('Unknown timing preset');
-  const source = style === 'gentle'
+  const source = style === 'normal'
     ? { stagger: .015, duration: .500, firstDelay: 0 }
     : { stagger: .025, duration: .680, firstDelay: .025 };
   const base = preset === 'source' ? source : { stagger: .018, duration: .300, firstDelay: .018 };
@@ -25,7 +25,7 @@ export function timing(style = 'gentle', options = {}) {
 }
 
 // Invert Bezier X, then evaluate Y. Substituting Y(u) for Y(X^-1(time)) changes the easing.
-export function gentleEase(time) {
+export function normalEase(time) {
   time = clamp(time);
   const bezier = (u, p, q) => 3 * (1-u) ** 2 * u * p + 3 * (1-u) * u*u * q + u**3;
   let lo = 0, hi = 1;
@@ -55,8 +55,8 @@ export function sample(style, elapsed, index = 0, options = {}) {
   }
   const local = elapsed - cfg.firstDelay - index * cfg.stagger;
   if (local >= cfg.duration) return { ...NATURAL };
-  if (style === 'gentle') {
-    const e = local <= 0 ? 0 : gentleEase(local/cfg.duration);
+  if (style === 'normal') {
+    const e = local <= 0 ? 0 : normalEase(local/cfg.duration);
     return { opacity: e, y: 15*(1-e)/cfg.pixelsPerUnit, scaleY: 1, rotation: 0, blur: 0 };
   }
   const p = emotionalSelector(local, cfg.duration);
@@ -64,7 +64,7 @@ export function sample(style, elapsed, index = 0, options = {}) {
     scaleY: 1-.22*p, rotation: 12*p, blur: 10*Math.max(p,0)/cfg.pixelsPerUnit };
 }
 
-export function totalDuration(unitCount, style = 'gentle', options = {}) {
+export function totalDuration(unitCount, style = 'normal', options = {}) {
   const c = timing(style, options);
   if (!Number.isInteger(unitCount) || unitCount < 0) throw new RangeError('Invalid unit count');
   return unitCount ? c.firstDelay + (unitCount-1)*c.stagger + c.duration : 0;
@@ -102,7 +102,7 @@ export function keyframes(style, options = {}) {
     const offset = n/frames, p = sample(style, offset*cfg.duration, 0, localOptions);
     const frame = { offset, opacity: p.opacity,
       transform: `translateY(${p.y}px) rotate(${p.rotation}deg) scaleY(${p.scaleY})` };
-    // Gentle must not animate filter/blur, including a redundant zero-blur track.
+    // Normal must not animate filter/blur, including a redundant zero-blur track.
     if (style === 'emotional') frame.filter = `blur(${p.blur}px)`;
     return frame;
   });

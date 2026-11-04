@@ -107,14 +107,14 @@ def compile_plan(path):
                     require(event.get('space', 'composition') == 'composition', 'Only editorial composition-space text is implemented')
                     event.pop('space', None)
                     require(isinstance(event.get('text'), str), 'Text must be a string')
-                    require(event.get('style', 'gentle') in ('gentle', 'emotional'), 'Invalid Gentle/Emotional style')
+                    require(event.get('style', 'normal') in ('normal', 'emotional'), 'Invalid Normal/Emotional style')
                     require(all(number(event.get(k)) for k in ('x', 'y', 'width')) and event['width'] > 0, 'Invalid text geometry')
                     # Catch invalid timing before browser/render startup.
                     cfg = event.get('timing', {})
                     require(isinstance(cfg, dict), 'timing must be an object')
                     for key in ('stagger', 'firstDelay', 'duration', 'pixelsPerUnit'):
                         if key in cfg:
-                            require(number(cfg[key]) and (cfg[key] > 0 if key in ('duration', 'pixelsPerUnit') else cfg[key] >= 0), 'Invalid Gentle/Emotional timing')
+                            require(number(cfg[key]) and (cfg[key] > 0 if key in ('duration', 'pixelsPerUnit') else cfg[key] >= 0), 'Invalid Normal/Emotional timing')
                     texts.append({**event, **common})
                 else:
                     src = resolve_file(root, event['src'])

@@ -1,30 +1,30 @@
-# Эффекты текста: Обычный и Эмоциональный
+# Эффекты текста: Normal и Emotional
 
 Use for an intentional text reveal in an app field, heading, label, chat message or
 editorial text layer. Keep copy, font, weight, color, shaping, alignment and wrapping
 owned by the host. This is a portable text technique, not a Kino-specific screen.
 
-Названия эффектов: **Обычный** и **Эмоциональный**. Программные значения
-`gentle` и `emotional` в JSON/API сохраняются для совместимости планов.
+Названия эффектов: **Normal** и **Emotional**. Программные значения
+`normal` и `emotional` используются в JSON/API. В существующих планах обновите значение стиля первого эффекта на `normal`.
 
 ## Choose the style and clock
 
-- **Обычный:** crisp rising letters and opacity, no blur, rotation or
+- **Normal:** crisp rising letters and opacity, no blur, rotation or
   squash. Prefer for longer copy, repeated text and restrained interfaces.
-- **Эмоциональный:** local rise, blur, vertical squash and rotation,
+- **Emotional:** local rise, blur, vertical squash and rotation,
   followed by one damped overshoot. Prefer short accents. Use on longer input
   when explicitly chosen, as in the owner's latest promo; assess density/cost.
-- Эмоциональный text is distinct from **эмоциональный фокус** (stars/stickers/emoji).
+- Emotional text is distinct from **эмоциональный фокус** (stars/stickers/emoji).
   Selecting this text style does not itself add decorative particles or a zoom.
 
 | Clock | Stagger | Per-unit motion | First visible unit delay | Line-break pause |
 | --- | --- | --- | --- | --- |
 | **promo**, both styles | 18 ms | 300 ms | 18 ms | 0 |
-| source Обычный | 15 ms | 500 ms | 0 | 0 |
-| source Эмоциональный | 25 ms | 680 ms | 25 ms | 0 |
+| source Normal | 15 ms | 500 ms | 0 | 0 |
+| source Emotional | 25 ms | 680 ms | 25 ms | 0 |
 
-`promo` is the owner's requested reusable starting pace. The Эмоциональный variant
-was used and inspected in the latest production. Обычный at the same pace is a
+`promo` is the owner's requested reusable starting pace. The Emotional variant
+was used and inspected in the latest production. Normal at the same pace is a
 new adaptation of its source easing, not an effect already observed in that
 video. These are configurable presets; choose slower timing or a longer final
 reading hold for denser copy. Do not silently slow the whole application.
@@ -40,11 +40,11 @@ are both settled; a callback alone does not establish recorded readiness.
 
 ## Property equations
 
-Обычный: `e = cubicBezier(0.2,0.8,0.2,1)(local/duration)`, opacity=e,
+Normal: `e = cubicBezier(0.2,0.8,0.2,1)(local/duration)`, opacity=e,
 Y=`15*(1-e)` source pixels. Correctly invert the curve's X before evaluating Y.
 ScaleY=1, rotation=0, blur=0 throughout; no filter track is needed.
 
-Эмоциональный maps the source selector onto the requested local duration:
+Emotional maps the source selector onto the requested local duration:
 
 ```text
 t = local * (0.680 / duration)
@@ -180,7 +180,7 @@ If phases are missing, re-capture rather than silently inventing glyph frames.
 See [registration](registration.md) for duplicate-PTS/best-effort timestamp issues.
 
 Check spaces, punctuation, Cyrillic/emoji clusters and line wrapping; continuous
-left-to-right onset at the wrap; exact final state; no blur in Обычный; Эмоциональный
+left-to-right onset at the wrap; exact final state; no blur in Normal; Emotional
 overshoot without negative blur/opacity; geometry/clipping and clean backing;
 cancellation/replacement and the reading hold before the next action. Use code
 checks and recorded media. Do not launch unrelated app UI/accessibility tests.
@@ -193,12 +193,12 @@ acceptance or a guarantee that the host field/overlay has been integrated.
 ## Provenance and limits
 
 Independent adapters of the documented approaches:
-[Обычный](https://github.com/mishanaer/deslop),
-[Обычный parameters](https://api.github.com/repos/mishanaer/deslop/git/blobs/23379c9caaff183767318e550cbd47ff5121f84d),
-[Эмоциональный](https://github.com/mishanaer/deslop),
-[Эмоциональный parameters](https://api.github.com/repos/mishanaer/deslop/git/blobs/41e2da326fd759a42dbc2f102a52a491fad2bfda).
-Parameter blob SHAs checked3November2026: Обычный
-`23379c9caaff183767318e550cbd47ff5121f84d`, Эмоциональный
+[Normal](https://github.com/mishanaer/deslop),
+[Normal parameters](https://api.github.com/repos/mishanaer/deslop/git/blobs/23379c9caaff183767318e550cbd47ff5121f84d),
+[Emotional](https://github.com/mishanaer/deslop),
+[Emotional parameters](https://api.github.com/repos/mishanaer/deslop/git/blobs/41e2da326fd759a42dbc2f102a52a491fad2bfda).
+Parameter blob SHAs checked3November2026: Normal
+`23379c9caaff183767318e550cbd47ff5121f84d`, Emotional
 `41e2da326fd759a42dbc2f102a52a491fad2bfda`.
 The imported concept is the portable recipe, not exact numeric equivalence to
 the original After Effects blur/FFX or recovery of Telegram's animation engine.

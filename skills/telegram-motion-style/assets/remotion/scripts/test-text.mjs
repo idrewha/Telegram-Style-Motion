@@ -9,7 +9,7 @@ test('Cyrillic, ZWJ emoji, combining marks, spaces and continuous newline clock'
   assert.deepEqual(units.map(u => u.index), [0, 1, 2, 3, 4]);
 });
 test('seeking is deterministic and the final frame is natural', () => {
-  for (const style of ['gentle', 'emotional']) {
+  for (const style of ['normal', 'emotional']) {
     const before = sample(style, .09, 2);
     sample(style, 100, 2);
     assert.deepEqual(sample(style, .09, 2), before);
@@ -17,11 +17,11 @@ test('seeking is deterministic and the final frame is natural', () => {
       {opacity: 1, y: 0, scaleY: 1, rotation: 0, blur: 0});
   }
 });
-test('Gentle has no blur; Emotional has overshoot with bounded material values', () => {
+test('Normal has no blur; Emotional has overshoot with bounded material values', () => {
   let overshoot = false;
   for (let n = 0; n < 400; n++) {
     const t = n/1000;
-    assert.equal(sample('gentle', t).blur, 0);
+    assert.equal(sample('normal', t).blur, 0);
     const v = sample('emotional', t);
     overshoot ||= v.y < 0;
     assert.ok(v.opacity >= 0 && v.opacity <= 1 && v.blur >= 0);

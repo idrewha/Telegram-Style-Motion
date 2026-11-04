@@ -41,7 +41,7 @@ the next action at its resulting position instead of inserting a return scroll s
 to match an older menu shot.
 
 For a portable implementation of crisp or expressive glyph entry, read
-[«Обычный» и «Эмоциональный» text](text-motion.md): it includes native/web adapters and the continuous
+[«Normal» и «Emotional» text](text-motion.md): it includes native/web adapters and the continuous
 18ms promo clock. The following recording/repair constraints still apply.
 
 For native progressive entry, capture actual per-character input in the field,

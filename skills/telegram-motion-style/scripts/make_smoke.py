@@ -24,8 +24,8 @@ plan = {'version': 1, 'size': [480, 480], 'fps': 60, 'trim': [0, 4],
  'groups': [{'origin': 0, 'events': [
   {'id': 'camera', 'type': 'camera', 'at': 0, 'duration': .75, 'zoom': 1.15, 'focus': [100, 200], 'curve': 'reference'},
   {'id': 'tap', 'type': 'tap', 'at': 1.2, 'x': 100, 'y': 240},
-  {'id': 'gentle', 'type': 'text', 'at': 0, 'duration': 2, 'text': 'Тест Telegram Motion Style\nСлова 👋', 'style': 'gentle', 'x': 16, 'y': 15, 'width': 448, 'fontSize': 30},
-  {'id': 'emotional', 'type': 'text', 'at': 2, 'duration': 2, 'text': 'Эмоциональный\nтекст ✨', 'style': 'emotional', 'x': 16, 'y': 15, 'width': 448, 'fontSize': 30},
+  {'id': 'normal', 'type': 'text', 'at': 0, 'duration': 2, 'text': 'Тест Telegram Motion Style\nСлова 👋', 'style': 'normal', 'x': 16, 'y': 15, 'width': 448, 'fontSize': 30},
+  {'id': 'emotional', 'type': 'text', 'at': 2, 'duration': 2, 'text': 'Emotional\nтекст ✨', 'style': 'emotional', 'x': 16, 'y': 15, 'width': 448, 'fontSize': 30},
   {'id': 'tone', 'type': 'audio', 'at': 2, 'duration': 1, 'src': 'tone.wav', 'volume': .1}
  ]}]}
 (args.directory / 'plan.json').write_text(json.dumps(plan, ensure_ascii=False, indent=2))

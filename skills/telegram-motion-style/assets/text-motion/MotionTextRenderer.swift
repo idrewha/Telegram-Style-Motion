@@ -25,7 +25,7 @@ public struct MotionTextRenderer: TextRenderer {
     public var elapsed: Double
     public var style: TextMotionStyle
     public var timing: TextMotionTiming
-    public init(elapsed: Double, style: TextMotionStyle = .gentle,
+    public init(elapsed: Double, style: TextMotionStyle = .normal,
                 timing: TextMotionTiming = .init()) {
         self.elapsed = elapsed; self.style = style; self.timing = timing
     }

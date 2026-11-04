@@ -4,7 +4,7 @@ const active = new WeakMap();
 /** One-shot reveal of a text-only host. Existing typography/color stay on the host.
  * Returns {finished, cancel}; finished resolves to {cancelled:boolean} without double waiting.
  */
-export function revealText(host, { style = 'gentle', ...options } = {}) {
+export function revealText(host, { style = 'normal', ...options } = {}) {
   active.get(host)?.cancel();
   if (Array.from(host.childNodes).some(n => n.nodeType !== 3)) {
     throw new TypeError('Use a text-only host; preserve rich markup in a host-specific adapter');

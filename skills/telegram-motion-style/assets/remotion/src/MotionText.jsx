@@ -3,7 +3,7 @@ import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {sample, textPlan} from './motion.mjs';
 
 // editorial composition-space text, not a replacement for recorded UI text.
-export const MotionText = ({text, style = 'gentle', timing = {}, fontFamily = 'Arial',
+export const MotionText = ({text, style = 'normal', timing = {}, fontFamily = 'Arial',
   fontSize = 64, fontWeight = 600, color = '#ffffff', align = 'left'}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();

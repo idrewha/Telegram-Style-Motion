@@ -27,16 +27,16 @@ test('one continuous clock across explicit wraps; preserve emoji, combining mark
   near((cfg.firstDelay+after*cfg.stagger)-(cfg.firstDelay+before*cfg.stagger),.018);
 });
 
-test('Gentle stays crisp, upright, monotonic and lands exactly', () => {
+test('Normal stays crisp, upright, monotonic and lands exactly', () => {
   let prev=0;
   for(let k=0;k<=300;k++){
-    const p=sample('gentle',.018+k/1000);
+    const p=sample('normal',.018+k/1000);
     assert.equal(p.blur,0); assert.equal(p.rotation,0); assert.equal(p.scaleY,1);
     assert.ok(p.opacity>=prev-1e-10);assert.ok(p.y>=0);
     prev=p.opacity;
   }
-  assert.deepEqual(sample('gentle',.318),natural);
-  assert.ok(keyframes('gentle').every(f=>!('filter'in f)));
+  assert.deepEqual(sample('normal',.318),natural);
+  assert.ok(keyframes('normal').every(f=>!('filter'in f)));
 });
 
 test('Emotional preserves overshoot in motion while clamping material channels', () => {
@@ -52,14 +52,14 @@ test('Emotional preserves overshoot in motion while clamping material channels',
 });
 
 test('same unit motion shifts only by stagger; total readiness and source clock stay distinct', () => {
-  for(const style of ['gentle','emotional']){
+  for(const style of ['normal','emotional']){
     const a=sample(style,.12,0),b=sample(style,.12+7*.018,7);
     for(const field of Object.keys(a))near(a[field],b[field]);
     near(totalDuration(61,style),1.398);assert.equal(totalDuration(0,style),0);
   }
-  assert.equal(timing('gentle',{preset:'source'}).duration,.5);
+  assert.equal(timing('normal',{preset:'source'}).duration,.5);
   assert.equal(timing('emotional',{preset:'source'}).duration,.68);
-  assert.equal(timing('gentle',{preset:'source'}).firstDelay,0);
+  assert.equal(timing('normal',{preset:'source'}).firstDelay,0);
   near(totalDuration(2,'emotional',{stagger:.03,duration:.4}),.46);
   assert.throws(()=>timing('emotional',{duration:0}));
   assert.throws(()=>sample('emotional',NaN));
@@ -117,7 +117,7 @@ test('Swift native core agrees with JS for both styles, clocks, delays and pixel
     const main=join(dir,'main.swift'),binary=join(dir,'check');
     writeFileSync(main,`import Foundation
 var output: [[String:Any]] = []
-for style in [TextMotionStyle.gentle, .emotional] {
+for style in [TextMotionStyle.normal, .emotional] {
  for preset in [TextMotionPreset.promo, .source] {
   let timing = TextMotionTiming(style: style, preset: preset, pixelsPerUnit: 3)
   for elapsed in [-1.0, 0, 0.018, 0.06, 0.09741176470588236, 0.1366764705882353, 0.318, 0.5, 0.7, 10] {

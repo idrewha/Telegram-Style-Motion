@@ -1,7 +1,7 @@
 import Foundation
 
-/// Renderer-neutral Gentle/Emotional properties. See references/text-motion.md for source/adaptation boundaries.
-public enum TextMotionStyle: String, Sendable { case gentle, emotional }
+/// Renderer-neutral Normal/Emotional properties. See references/text-motion.md for source/adaptation boundaries.
+public enum TextMotionStyle: String, Sendable { case normal, emotional }
 public enum TextMotionPreset: String, Sendable { case promo, source }
 public struct TextMotionProperties: Sendable {
     public var opacity: Double
@@ -16,13 +16,13 @@ public struct TextMotionTiming: Sendable {
     public var duration: Double
     public var firstDelay: Double
     public var pixelsPerUnit: Double
-    public init(style: TextMotionStyle = .gentle, preset: TextMotionPreset = .promo,
+    public init(style: TextMotionStyle = .normal, preset: TextMotionPreset = .promo,
                 stagger: Double? = nil, duration: Double? = nil,
                 firstDelay: Double? = nil, pixelsPerUnit: Double = 1) {
-        let baseStagger = preset == .promo ? 0.018 : style == .gentle ? 0.015 : 0.025
+        let baseStagger = preset == .promo ? 0.018 : style == .normal ? 0.015 : 0.025
         self.stagger = stagger ?? baseStagger
-        self.duration = duration ?? (preset == .promo ? 0.300 : style == .gentle ? 0.500 : 0.680)
-        self.firstDelay = firstDelay ?? (preset == .promo ? self.stagger : style == .gentle ? 0 : 0.025)
+        self.duration = duration ?? (preset == .promo ? 0.300 : style == .normal ? 0.500 : 0.680)
+        self.firstDelay = firstDelay ?? (preset == .promo ? self.stagger : style == .normal ? 0 : 0.025)
         self.pixelsPerUnit = pixelsPerUnit
         precondition([self.stagger, self.duration, self.firstDelay, pixelsPerUnit].allSatisfy(\.isFinite))
         precondition(self.stagger >= 0 && self.duration > 0 && self.firstDelay >= 0 && pixelsPerUnit > 0)
@@ -34,7 +34,7 @@ public struct TextMotionTiming: Sendable {
 }
 public enum TextMotion {
     private static func clamp(_ x: Double) -> Double { min(1, max(0, x)) }
-    public static func gentleEase(_ time: Double) -> Double {
+    public static func normalEase(_ time: Double) -> Double {
         let time = clamp(time)
         func bezier(_ u: Double, _ p: Double, _ q: Double) -> Double {
             3 * pow(1-u, 2) * u * p + 3 * (1-u) * u*u * q + u*u*u
@@ -61,8 +61,8 @@ public enum TextMotion {
         let local = elapsed - timing.firstDelay - Double(index) * timing.stagger
         if local >= timing.duration { return .natural }
         switch style {
-        case .gentle:
-            let e = local <= 0 ? 0 : gentleEase(local / timing.duration)
+        case .normal:
+            let e = local <= 0 ? 0 : normalEase(local / timing.duration)
             return .init(opacity: e, y: 15 * (1-e) / timing.pixelsPerUnit, scaleY: 1, rotation: 0, blur: 0)
         case .emotional:
             let p = emotionalSelector(local: local, duration: timing.duration)
