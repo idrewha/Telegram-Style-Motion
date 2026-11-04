@@ -4,10 +4,47 @@
 движением камеры, рамкой устройства и полупрозрачными матовыми индикаторами нажатий.
 Он работает с настоящей записью приложения и сохраняет скорость нативной анимации.
 
-В комплекте — инструкции, пресет V4, скрипты монтажа, формулы камеры и
-индикатора, рекомендации по синхронизации и локальный журнал опыта.
+В комплекте — два самостоятельных скилла, пресет V4, база знаний по 50 роликам,
+скрипты монтажа, текстовые эффекты и локальный журнал опыта.
 В устанавливаемый пакет скилла не входят исходное приложение, записи, личный журнал
 автора, звуки и рамки Apple.
+
+## Какой скилл выбрать
+
+| Пакет | Что входит |
+| --- | --- |
+| [telegram-style-motion](skills/telegram-style-motion/SKILL.md) | Запись и калибровка, Python-композитор, камера V4, матовые тапы/свайпы, фокусирование, блики, база знаний и адаптеры текстовых эффектов |
+| [tg-up](skills/tg-up/SKILL.md) | Самостоятельный пакет с той же основой, единым `plan.json`, Remotion Studio, покадровым редакционным текстом и звуковыми дорожками |
+
+`tg-up` содержит собственную основу в `base/`; установка первого пакета ему не нужна.
+Эффекты текста называются **«Обычный»** и **«Эмоциональный»**.
+Значения `style: "gentle"` и `style: "emotional"` в плане — программные идентификаторы.
+Текст внутри записанного интерфейса требует настоящей подложки, маски и общей
+проекции камеры; редакционный текст Remotion сам этого не делает.
+
+## База знаний
+
+[Библиотека приёмов](skills/telegram-style-motion/references/corpus/index.md)
+содержит результаты завершённого локального визуального разбора **50 роликов**
+Telegram Tips, посты 527–576: **392 записи событий** и **50 описаний сцен**.
+В исходном архиве было 100 загрузок; остальные 50 не входили в глубокий разбор.
+Это файловая база наблюдений и измерений, а не обучение весов модели.
+
+Искать по задаче: [фокусирование](skills/telegram-style-motion/references/corpus/attention.md),
+[эмоциональный фокус](skills/telegram-style-motion/references/corpus/emotional-focus.md),
+[скроллинг](skills/telegram-style-motion/references/corpus/scroll.md),
+[обратная связь контролов](skills/telegram-style-motion/references/corpus/control-feedback.md),
+[ввод и поверхности](skills/telegram-style-motion/references/corpus/input-and-surfaces.md),
+[AI-ответы](skills/telegram-style-motion/references/corpus/ai-response.md),
+[ритм](skills/telegram-style-motion/references/corpus/pacing.md) и
+[сценарий](skills/telegram-style-motion/references/corpus/narrative-and-focus.md).
+При необходимости искать `entity` в `data/deep-events.json`, а полный контекст —
+в `data/deep-scenes.json`. Не загружать всю базу ради одного приёма.
+
+В пакет входят CSV, JSON измерений и отдельные проверочные изображения.
+Исходные ролики, полный архив покадрового просмотра и личные журналы не включены.
+Статусы просмотра унаследованы от исследования; обновление репозитория не является
+повторным просмотром 50 роликов. Точные движки и все кривые из видео не восстановлены.
 
 ## Демонстрация
 
@@ -33,6 +70,9 @@ $skill-installer Установи telegram-style-motion из
 https://github.com/idrewha/Telegram-Style-Motion/tree/main/skills/telegram-style-motion
 Это приватный репозиторий; используй существующий доступ Git.
 ```
+
+Для Remotion-версии используйте тот же запрос с именем `tg-up` и адресом
+[skills/tg-up](https://github.com/idrewha/Telegram-Style-Motion/tree/main/skills/tg-up).
 
 Либо скопируйте папку скилла вручную в пользовательский каталог:
 
@@ -77,6 +117,33 @@ python3 -m venv .venv
 FFmpeg и ffprobe должны быть доступны в `PATH`.
 [Подготовка входных данных и команды монтажа](skills/telegram-style-motion/references/rendering.md).
 
+## Работа с tg-up
+
+```text
+Используй $tg-up. Смонтируй реальную запись приложения, сохрани камеру V4
+и матовые жесты. Добавь обычный эффект текста и открой локальный предпросмотр.
+```
+
+Для Remotion дополнительно нужны Node.js и npm (пакет проверялся на Node 24).
+Зависимости фиксированы в шаблоне; устанавливать их в отдельную рабочую копию:
+
+```sh
+python3 skills/tg-up/scripts/tg_up.py init /path/to/new-work-project
+cd /path/to/new-work-project
+npm ci
+```
+
+План, подготовка базового видео, Studio и экспорт описаны в
+[рабочем процессе Remotion](skills/tg-up/references/remotion.md).
+Изменение камеры, тапов и объектов требует базового рендера; текст и звук
+можно менять отдельно. Общий `origin` меняет расписание событий, но не перемонтирует
+исходную запись. После её монтажа контакты нужно калибровать повторно.
+
+[Пресет compact-swipe-v1](skills/tg-up/references/gestures.md#approved-compact-swipe-preset)
+сохраняет согласованный ритм короткого свайпа с ранним отпусканием и небольшим
+докатом. Путь индикатора измеряется по конкретной записи; коэффициенты ускорения
+прошлого ролика не становятся настройками для всех новых.
+
 ## Что задаёт пресет V4
 
 | Параметр | По умолчанию |
@@ -98,6 +165,11 @@ FFmpeg и ffprobe должны быть доступны в `PATH`.
 
 ```sh
 python3 -m unittest discover -s skills/telegram-style-motion/scripts -p 'test_*.py' -v
+python3 -m unittest discover -s skills/tg-up/base/scripts -p 'test_*.py' -v
+python3 -m unittest discover -s skills/tg-up/scripts -p 'test_*.py' -v
+node --test skills/telegram-style-motion/scripts/test_text_motion.mjs
+node --test skills/tg-up/base/scripts/test_text_motion.mjs
+node --test skills/tg-up/assets/remotion/scripts/test-text.mjs
 ```
 
 Тесты проверяют журнал, параметры движения и рендер синтетического
@@ -110,3 +182,5 @@ python3 -m unittest discover -s skills/telegram-style-motion/scripts -p 'test_*.
 Инструкции и авторские дополнения — [MIT](LICENSE).
 Используйте собственные или разрешённые к использованию рамки, видео и аудио.
 Проект не связан с Telegram или Apple.
+Remotion устанавливается отдельно и имеет собственные
+[условия лицензирования](https://www.remotion.dev/license); MIT проекта их не заменяет.

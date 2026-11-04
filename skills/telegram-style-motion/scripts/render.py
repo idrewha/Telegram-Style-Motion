@@ -66,6 +66,11 @@ def check_inputs(args):
                 0 <= tap["y"] <= stream["height"] / args.scale):
             raise ValueError("Tap coordinates must be in the recorded window's points")
         previous = tap["time"]
+    if getattr(args, "layers", None):
+        from layers import LayerPlan
+        LayerPlan(args.layers, args.scale, (stream["width"], stream["height"]))
+    if getattr(args, "background_video", None) and not args.background_video.is_file():
+        raise ValueError("Background video must be an existing local file")
     if args.camera and not args.camera.is_file():
         raise ValueError("Camera must be an authored JSON file; auto-zoom is not the V4 default")
 
@@ -79,10 +84,12 @@ def main():
     parser.add_argument("--start", required=True, type=float, help="trim start in normalized video seconds")
     parser.add_argument("--end", required=True, type=float, help="captured ending in normalized video seconds")
     parser.add_argument("--camera", type=Path, help="authored moves with curve: reference; same video clock")
+    parser.add_argument("--layers", type=Path, help="optional recorded-object and glint tracks on the video clock")
     parser.add_argument("--size", default="1920x1920")
     parser.add_argument("--fps", type=int, default=60)
     parser.add_argument("--share", type=float, default=0.94, help="full-device height / output height")
     parser.add_argument("--background", default="gradient", help="gradient, #hex, or a local image")
+    parser.add_argument("--background-video", type=Path, help="optional animated backdrop on the composition clock")
     parser.add_argument("--colors", default="#c9d9ff,#e5d7ff,#bfeaff", help="gradient colors")
     parser.add_argument("--overwrite", action="store_true")
     args = parser.parse_args()
@@ -102,6 +109,8 @@ def main():
         "--share", str(args.share), "--camera", str(args.camera) if args.camera else "none",
         "--ring", "telegram", "--tap-profile", "reference", "--static-background",
         "--no-shadow", "--background", args.background, "--colors", args.colors,
+        *(["--layers", str(args.layers)] if args.layers else []),
+        *(["--background-video", str(args.background_video)] if args.background_video else []),
     ], check=True)
 
 

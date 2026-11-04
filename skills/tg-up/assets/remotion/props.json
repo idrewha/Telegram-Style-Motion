@@ -1,0 +1,4 @@
+{
+  "width": 1920, "height": 1920, "fps": 60, "durationInFrames": 1,
+  "base": {"src": "base.mp4", "muted": true}, "texts": [], "audio": []
+}

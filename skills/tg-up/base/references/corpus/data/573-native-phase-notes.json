@@ -1,0 +1,46 @@
+{
+  "source": "573-0",
+  "fps": 60,
+  "method": "Human semantic phase annotations from840consecutive frames/28dense and23original-resolution anchors; no automatic semantic learning or recovered motion engine.",
+  "nativeAnchors": {
+    "expand-discovery": [
+      49,
+      52,
+      60,
+      90,
+      120,
+      132
+    ],
+    "image-insertion": [
+      306,
+      315,
+      325,
+      340
+    ],
+    "rolled-table": [
+      365,
+      380,
+      400,
+      412
+    ],
+    "composer-entry": [
+      38,
+      45,
+      54
+    ],
+    "selection-format": [
+      151,
+      165,
+      175,
+      247,
+      253,
+      259
+    ]
+  },
+  "limits": [
+    "ROIs preserve original pixel resolution, but entry45 clips final line and insertion may obscure lower shape extremity. Do not measure full shape from clipped crop.",
+    "No per-frame geometric/easing fit; circular origin, deformation, hierarchy and occlusion are visually established.",
+    "No physical input logs, table cell edits, file picker or separate italic/flag actions shown.",
+    "Slow025x previews exported, not claimed played; no audio listening."
+  ]
+}

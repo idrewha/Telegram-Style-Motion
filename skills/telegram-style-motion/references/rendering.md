@@ -17,8 +17,40 @@ ffmpeg -i /path/to/raw-recording.mp4 -vf 'fps=60:start_time=0' -an \
   -c:v libx264 -preset fast -crf 16 /path/to/composition-input/rec.mp4
 ```
 
+After a multi-input `concat` filter, explicitly set output `-r 60 -fps_mode cfr` (or the chosen composition rate). The concat output can lose its inferred rate: one checked Kino edit defaulted to 25 fps despite 60 fps filters on its branches. Rebuild from the raw sources when frames were dropped; do not upsample that rejected 25 fps export as a repair. Validate encoded frame count and PTS before contact calibration.
+
 Do not normalize a second time after calibrating. Verify initial PTS and frame
 spacing. Keep the same frame sequence for detection, cleaning, composition and audit.
+
+For a VFR source, apply `fps` before trimming, or normalize the entire recording
+first. Seeking with `-ss` and then resetting the first decoded frame to PTS zero
+can discard a static hold: the next encoded frame may be the UI reaction itself.
+For selective export on the original clock, decode from the source start and use
+`fps=60:start_time=0,trim=start_frame=START:end_frame=END,setpts=PTS-STARTPTS`.
+Calibrate contacts on the resulting edited CFR input, not on nominal seek offsets.
+
+For pacing revisions, re-edit the unframed screen footage and render a new continuous
+camera/tap timeline. Cutting already-composited close and wide shots can reset the
+camera pose or truncate a tap phase. Keep a scroll as one coherent movement; capture
+the next action at its resulting position instead of inserting a return scroll solely
+to match an older menu shot.
+
+For a portable implementation of crisp or expressive glyph entry, read
+[«Обычный» и «Эмоциональный» text](text-motion.md): it includes native/web adapters and the continuous
+18ms promo clock. The following recording/repair constraints still apply.
+
+For native progressive entry, capture actual per-character input in the field,
+including caret and line-wrap/height changes. A bulk typing API may insert whole
+chunks even when its name says “type”; inspect consecutive normalized frames before
+using that take. For the references' soft glyph reveal, an explicitly planned overlay
+can instead use the actual final field/text artwork: preserve typography and origin,
+reveal staggered glyphs or line-wise clarity fronts with local blur/offset, and remove
+the original text underneath without duplicate ink. Coordinate field accommodation
+separately; do not imply physical keystrokes or a keyboard absent from the footage.
+Consult [input and surfaces](corpus/input-and-surfaces.md) for checked variants.
+Keep a readable completed-text hold before Send. In a chat sequence,
+retain a visible pending/reveal beat and let the scroll settle before the next tap;
+contact-to-contact spacing alone does not establish that the viewer can follow it.
 
 The input directory must contain:
 
@@ -69,6 +101,13 @@ The underlying compositor is [vendor/compose.py](../scripts/vendor/compose.py),
 with its [MIT notice](../scripts/vendor/LICENSE). Its legacy automatic timing and
 defaults are retained for compatibility; use `render.py` for new calibrated V4 work.
 
+An optional `--background-video /path/to/backdrop.mp4` supplies an animated local
+backdrop on the same composition clock. It stays independent of camera moves;
+trimming starts at that time in both videos. Supply enough frames through the
+chosen ending: an exhausted backdrop fails instead of cloning its tail. A smooth
+color flow can echo an actual sampled app accent when requested; this is art
+direction, not a mandatory Telegram treatment.
+
 ## Camera plan
 
 Omit `--camera` for a steady full-device shot. Add only useful transitions. A plan
@@ -88,6 +127,52 @@ derive your own from the actual bezel/screen transform. `focus` is in window poi
 settling tail. Keep moves non-overlapping and use numeric times rather than legacy
 `tapN` shorthand. Check the composition and complete tap-ring reach using extracted
 frames from the actual output. See [camera motion](camera-motion.md).
+
+An optional camera move field `"path": "projected"` interpolates the final image
+translation together with scale rather than interpolating the source focus point.
+Use it when both poses share a visible edge (for example, a bottom-aligned close
+view returning to full device): that edge stays fixed throughout travel.
+The omitted/default `"path": "focus"` preserves previous exports. This is a
+composition choice, independent of the `reference` timing curve.
+
+## Optional extracted objects and glints
+
+Pass `--layers /path/to/layers.json` to add recorded-object focusing or small
+four-point glints. Existing projects need no new argument. The schema is:
+
+```json
+{"version": 1, "layers": [
+  {"type": "sprite", "asset": "button.png", "repair": "clean-plate.png",
+   "screenRect": [24, 768, 44, 44], "start": 2.6,
+   "enter": 0.24, "hold": 0.32, "exit": 0.28,
+   "scale": 1.6, "offset": [-0.07, -0.02], "dim": 0.18},
+  {"type": "glint", "anchor": [55, 778], "start": 4.1,
+   "duration": 0.35, "radius": 4}
+]}
+```
+
+Coordinates are illustrative, in recorded window points. Asset paths resolve
+relative to the JSON. Both artwork and repair must be RGBA: asset alpha isolates
+the actual object; repair alpha limits replacement to its original footprint.
+Capture the real backing while hiding only that object, retaining its layout.
+Do not cover it with a guessed solid color on a translucent/material surface.
+
+The repair runs before the phone is composited; the extracted object runs after
+the bezel, so it can cross the physical boundary without a duplicate underneath.
+Both share the camera projection. `offset` is a fraction of output width/height,
+`scale` is relative to the object's original size, and `dim` shades the source
+screen during emphasis. Enter uses cubic deceleration; exit uses smoothstep.
+These are authoring choices, not an exact recovery of Telegram's source engine.
+Glints use a sine envelope, four points and a soft glow. Time is the edited
+footage clock. Check the return before the next contact and check the active
+camera pose; numeric schema validation cannot establish a clean extraction.
+
+A sprite can opt into `"exitCurve": "settle"` for one small scale undershoot
+and exact restoration. Keep `offset: [0, 0]` for enlargement at its own center;
+the default exit remains smoothstep. Optional `"sheen": {"start": 0.04,
+"duration": 0.30, "strength": 0.24}` sweeps a soft light band through the actual
+object alpha. Its start is relative to the sprite start, not a second video clock.
+This does not create a second press or an unmasked rectangular light layer.
 
 ## Audio and verification
 

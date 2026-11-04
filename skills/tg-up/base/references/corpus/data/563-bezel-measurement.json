@@ -1,0 +1,97 @@
+{
+  "method": "Darkest averaged straight-bezel stripe at y220:320 in540-scaled source; width comparison only, not precise outer bounds.",
+  "anchors": [
+    {
+      "frame": 0,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 30,
+      "leftDarkRim": 96,
+      "rightDarkRim": 440,
+      "span540": 344
+    },
+    {
+      "frame": 90,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 120,
+      "leftDarkRim": 99,
+      "rightDarkRim": 440,
+      "span540": 341
+    },
+    {
+      "frame": 150,
+      "leftDarkRim": 97,
+      "rightDarkRim": 442,
+      "span540": 345
+    },
+    {
+      "frame": 180,
+      "leftDarkRim": 97,
+      "rightDarkRim": 442,
+      "span540": 345
+    },
+    {
+      "frame": 210,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 240,
+      "leftDarkRim": 99,
+      "rightDarkRim": 440,
+      "span540": 341
+    },
+    {
+      "frame": 300,
+      "leftDarkRim": 99,
+      "rightDarkRim": 440,
+      "span540": 341
+    },
+    {
+      "frame": 360,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 420,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 450,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 510,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 570,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 599,
+      "leftDarkRim": 99,
+      "rightDarkRim": 440,
+      "span540": 341
+    }
+  ],
+  "limits": "~1\u20132scaledpx threshold/render uncertainty. Whole-frame anchor audit required to distinguish page deformation from camera; native authored transform unknown.",
+  "visualAudit": "All15full-phone anchors inspected.341\u2013345scaledpx width proxy with endpoint interference/uncertainty; approximately fixed large upper-detail device. Native panels/media change independently."
+}

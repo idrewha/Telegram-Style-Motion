@@ -1,0 +1,28 @@
+{
+  "status": "Checked native anchor phase notes; whole dense visual pass recorded separately",
+  "source": "569-0",
+  "nativeAnchors": [
+    135,
+    136,
+    138,
+    140,
+    145,
+    158,
+    170,
+    195,
+    210,
+    218
+  ],
+  "correctedOnset": {
+    "absent": 135,
+    "firstVisible": 136,
+    "seconds": 2.2666666666666666
+  },
+  "starPhases": "135 absent;136 first orange outline and white glow follows Add Style while row still moves left;138 multicolor filled stars;140/145 nested yellow/orange outlines;158 expanded faded contours plus perimeter particles;170 independent frosted tap annulus overlays particles;195 particles/glow remain above arriving form near former target location;210 isolated glints;218 no salient stars.",
+  "limits": [
+    "Prior narrower crop clipped left silhouette; not usable for full geometry.",
+    "No measured particle trajectory/easing; native anchors constrain phases only.",
+    "Full dense pass is not publication or recovery of original animation engine."
+  ],
+  "ending": "Add Style compression870; sheet lowers871, toast appears878 while sheet still present, chat near-rest~885; toast held through960; unmarked blur/reflow loop961..974 restores initial conversation; end989."
+}

@@ -1,0 +1,74 @@
+{
+  "status": "Five threshold overlays and matching raw anchors audited; fixed title proxy",
+  "parameters": {
+    "directory": "external-study-archive/review/571-0/native-event/rich-reveal-and-table",
+    "start": 330,
+    "end": 426,
+    "box": "90,70,750,230",
+    "exclude_x": "",
+    "min_channel": 120,
+    "max_spread": 80,
+    "anchors": "330,390,410,420,425",
+    "name": "title-y"
+  },
+  "samples": [
+    {
+      "frame": 330,
+      "seconds": 5.5,
+      "inkPixels": 7342,
+      "left": 107,
+      "top": 132,
+      "right": 677,
+      "bottom": 186,
+      "width": 571,
+      "height": 55
+    },
+    {
+      "frame": 390,
+      "seconds": 6.5,
+      "inkPixels": 7363,
+      "left": 107,
+      "top": 132,
+      "right": 677,
+      "bottom": 186,
+      "width": 571,
+      "height": 55
+    },
+    {
+      "frame": 410,
+      "seconds": 6.833333333333333,
+      "inkPixels": 7511,
+      "left": 107,
+      "top": 123,
+      "right": 677,
+      "bottom": 177,
+      "width": 571,
+      "height": 55
+    },
+    {
+      "frame": 420,
+      "seconds": 7.0,
+      "inkPixels": 7473,
+      "left": 107,
+      "top": 112,
+      "right": 677,
+      "bottom": 166,
+      "width": 571,
+      "height": 55
+    },
+    {
+      "frame": 425,
+      "seconds": 7.083333333333333,
+      "inkPixels": 7468,
+      "left": 107,
+      "top": 105,
+      "right": 677,
+      "bottom": 159,
+      "width": 571,
+      "height": 55
+    }
+  ],
+  "limits": "Bright-ink threshold proxy only. Count/span combine glyphs, antialiasing, opacity, motion, masking and compression. Crops/exclusions may omit content. No exact keystroke, alpha, font transform, engine or network latency inferred.",
+  "finding": "Title top132at330and390,123at410,112at420,105at425. ≥9px movement by410 exceeds~2pxedgeuncertainty while horizontal table still moving. Axes are not strictly separated by a pause.",
+  "uncertaintyPx": 2
+}

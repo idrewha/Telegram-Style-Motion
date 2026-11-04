@@ -1,0 +1,97 @@
+{
+  "method": "Darkest averaged straight-bezel stripe at y220:320 in540-scaled source; width comparison only, not precise outer bounds.",
+  "anchors": [
+    {
+      "frame": 0,
+      "leftDarkRim": 96,
+      "rightDarkRim": 440,
+      "span540": 344
+    },
+    {
+      "frame": 60,
+      "leftDarkRim": 96,
+      "rightDarkRim": 440,
+      "span540": 344
+    },
+    {
+      "frame": 120,
+      "leftDarkRim": 96,
+      "rightDarkRim": 440,
+      "span540": 344
+    },
+    {
+      "frame": 180,
+      "leftDarkRim": 96,
+      "rightDarkRim": 440,
+      "span540": 344
+    },
+    {
+      "frame": 240,
+      "leftDarkRim": 96,
+      "rightDarkRim": 440,
+      "span540": 344
+    },
+    {
+      "frame": 270,
+      "leftDarkRim": 97,
+      "rightDarkRim": 440,
+      "span540": 343
+    },
+    {
+      "frame": 300,
+      "leftDarkRim": 105,
+      "rightDarkRim": 434,
+      "span540": 329
+    },
+    {
+      "frame": 360,
+      "leftDarkRim": 105,
+      "rightDarkRim": 434,
+      "span540": 329
+    },
+    {
+      "frame": 420,
+      "leftDarkRim": 105,
+      "rightDarkRim": 434,
+      "span540": 329
+    },
+    {
+      "frame": 480,
+      "leftDarkRim": 105,
+      "rightDarkRim": 434,
+      "span540": 329
+    },
+    {
+      "frame": 510,
+      "leftDarkRim": 105,
+      "rightDarkRim": 434,
+      "span540": 329
+    },
+    {
+      "frame": 540,
+      "leftDarkRim": 99,
+      "rightDarkRim": 440,
+      "span540": 341
+    },
+    {
+      "frame": 600,
+      "leftDarkRim": 96,
+      "rightDarkRim": 440,
+      "span540": 344
+    },
+    {
+      "frame": 660,
+      "leftDarkRim": 96,
+      "rightDarkRim": 442,
+      "span540": 346
+    },
+    {
+      "frame": 689,
+      "leftDarkRim": 96,
+      "rightDarkRim": 442,
+      "span540": 346
+    }
+  ],
+  "limits": "~1\u20132scaledpx threshold/render uncertainty. Whole-frame anchor audit required to distinguish page deformation from camera; native authored transform unknown.",
+  "visualAudit": "All15full-phone anchors inspected. Lower-detail pose has329pxstraight-rim span versus344initial (~.9564); smaller scale accompanies upward translation. Constant-scale interpretation rejected; endpoint uncertainty1\u20132px means ratio approximate, not exact transform."
+}

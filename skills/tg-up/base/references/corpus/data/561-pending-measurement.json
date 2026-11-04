@@ -1,0 +1,90 @@
+{
+  "method": "Native output band x20:980,y200:550, count maxRGB<110. Mostly excludes gray labels/pale skeleton and blue icon; initial Original label may contribute. Validated for first-new-ink onset, not full old-text alpha.",
+  "frames": [
+    237,
+    321
+  ],
+  "samples": [
+    {
+      "frame": 240,
+      "seconds": 4.0,
+      "darkInkPixels": 21551,
+      "top": 279,
+      "bottom": 522
+    },
+    {
+      "frame": 248,
+      "seconds": 4.133333333333334,
+      "darkInkPixels": 0,
+      "top": null,
+      "bottom": null
+    },
+    {
+      "frame": 255,
+      "seconds": 4.25,
+      "darkInkPixels": 0,
+      "top": null,
+      "bottom": null
+    },
+    {
+      "frame": 270,
+      "seconds": 4.5,
+      "darkInkPixels": 0,
+      "top": null,
+      "bottom": null
+    },
+    {
+      "frame": 299,
+      "seconds": 4.983333333333333,
+      "darkInkPixels": 0,
+      "top": null,
+      "bottom": null
+    },
+    {
+      "frame": 300,
+      "seconds": 5.0,
+      "darkInkPixels": 0,
+      "top": null,
+      "bottom": null
+    },
+    {
+      "frame": 301,
+      "seconds": 5.016666666666667,
+      "darkInkPixels": 439,
+      "top": 345,
+      "bottom": 381
+    },
+    {
+      "frame": 305,
+      "seconds": 5.083333333333333,
+      "darkInkPixels": 2373,
+      "top": 345,
+      "bottom": 390
+    },
+    {
+      "frame": 310,
+      "seconds": 5.166666666666667,
+      "darkInkPixels": 5889,
+      "top": 344,
+      "bottom": 390
+    },
+    {
+      "frame": 320,
+      "seconds": 5.333333333333333,
+      "darkInkPixels": 13631,
+      "top": 344,
+      "bottom": 456
+    }
+  ],
+  "visualAudit": "All10proof anchors inspected; raw255/300/301 checked. No dark output ink246\u2013300; first new ink301,439pixels. F300is a visibly blank output band, not first letter. Original label may contribute to initialF240count; do not interpret old ink-count decline as alpha curve.",
+  "limits": "Band validity requires proof-anchor audit; moving sheet/text may leave band later. No per-character keystroke or engine claim.",
+  "landmarks": {
+    "compression": 240,
+    "oldDarkInkZero": 246,
+    "skeletonEstablishedApprox": 255,
+    "lastSkeletonFrame": 299,
+    "blankFrame": 300,
+    "newDarkInk": 301,
+    "requestToFirstInkSeconds": 1.0166666666666666
+  }
+}

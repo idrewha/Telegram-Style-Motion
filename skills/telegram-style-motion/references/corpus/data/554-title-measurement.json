@@ -1,0 +1,160 @@
+{
+  "method": "Native blue headline ink, y100:205 x110:720, stationary quote-bar columns190:204 excluded. This is an ink+depth proxy, not authored text transform; crop origin(231,462).",
+  "baseline": {
+    "frame": 204,
+    "seconds": 3.4,
+    "left": 221,
+    "top": 158,
+    "right": 459,
+    "bottom": 195,
+    "width": 239,
+    "height": 38
+  },
+  "widthPeak": {
+    "frame": 240,
+    "seconds": 4.0,
+    "left": 132,
+    "top": 119,
+    "right": 671,
+    "bottom": 200,
+    "width": 540,
+    "height": 82
+  },
+  "widthRatio": 2.2594142259414225,
+  "uncertainty": "Approx2\u20134px threshold/compression variation; blue extrusion contributes. Fixed bar exclusion removes a thin title strip too; outer bounds unaffected at checked anchors.",
+  "anchors": [
+    {
+      "frame": 204,
+      "seconds": 3.4,
+      "left": 221,
+      "top": 158,
+      "right": 459,
+      "bottom": 195,
+      "width": 239,
+      "height": 38
+    },
+    {
+      "frame": 210,
+      "seconds": 3.5,
+      "left": 221,
+      "top": 158,
+      "right": 463,
+      "bottom": 196,
+      "width": 243,
+      "height": 39
+    },
+    {
+      "frame": 219,
+      "seconds": 3.65,
+      "left": 210,
+      "top": 154,
+      "right": 489,
+      "bottom": 196,
+      "width": 280,
+      "height": 43
+    },
+    {
+      "frame": 225,
+      "seconds": 3.75,
+      "left": 178,
+      "top": 139,
+      "right": 567,
+      "bottom": 198,
+      "width": 390,
+      "height": 60
+    },
+    {
+      "frame": 230,
+      "seconds": 3.8333333333333335,
+      "left": 148,
+      "top": 126,
+      "right": 636,
+      "bottom": 199,
+      "width": 489,
+      "height": 74
+    },
+    {
+      "frame": 240,
+      "seconds": 4.0,
+      "left": 132,
+      "top": 119,
+      "right": 671,
+      "bottom": 200,
+      "width": 540,
+      "height": 82
+    },
+    {
+      "frame": 250,
+      "seconds": 4.166666666666667,
+      "left": 148,
+      "top": 126,
+      "right": 636,
+      "bottom": 199,
+      "width": 489,
+      "height": 74
+    },
+    {
+      "frame": 260,
+      "seconds": 4.333333333333333,
+      "left": 206,
+      "top": 152,
+      "right": 497,
+      "bottom": 196,
+      "width": 292,
+      "height": 45
+    },
+    {
+      "frame": 269,
+      "seconds": 4.483333333333333,
+      "left": 222,
+      "top": 158,
+      "right": 463,
+      "bottom": 196,
+      "width": 242,
+      "height": 39
+    },
+    {
+      "frame": 280,
+      "seconds": 4.666666666666667,
+      "left": 222,
+      "top": 159,
+      "right": 462,
+      "bottom": 196,
+      "width": 241,
+      "height": 38
+    },
+    {
+      "frame": 300,
+      "seconds": 5.0,
+      "left": 222,
+      "top": 158,
+      "right": 462,
+      "bottom": 196,
+      "width": 241,
+      "height": 39
+    },
+    {
+      "frame": 311,
+      "seconds": 5.183333333333334,
+      "left": 222,
+      "top": 158,
+      "right": 462,
+      "bottom": 196,
+      "width": 241,
+      "height": 39
+    }
+  ],
+  "visualAudit": "Native F204/210/219/225/230/240/250/260/269/280/300/311 anchors checked. F219 is already growing and rejected as rest baseline. Final width241px, initial239\u2013243within threshold/settlement uncertainty; no confirmed undershoot.",
+  "restWidthApprox": 241,
+  "peakToRestWidthRatio": 2.240663900414938,
+  "phaseFrames": {
+    "rise10": 219,
+    "rise50": 226,
+    "rise90": 233,
+    "peak": 240,
+    "return10": 249,
+    "return50": 255,
+    "return90": 262,
+    "nearRest": 269
+  }
+}

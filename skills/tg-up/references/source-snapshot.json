@@ -1,0 +1,531 @@
+{
+  "date": "2026-11-04",
+  "source": "Installed tg-up skill snapshot; source bytes compared locally before packaging",
+  "repositoryBase": "9d151fa14307a317513abf96554426f91b66811b",
+  "excluded": [
+    "private learning journals",
+    "private integration notes removed by repository history",
+    "local captures, full research archive and caches",
+    "historical validation report with owner-local paths"
+  ],
+  "adaptations": [
+    "Preserve repository privacy edits and portable provenance",
+    "Replace absolute research paths with external-study-archive identifiers",
+    "Add portable gesture recipe to both packages",
+    "Use neutral text-motion file paths, component names and provenance links"
+  ],
+  "files": {
+    ".gitignore": {
+      "sourceSha256": "c30a4d1a61d3f43a53eeec0324450cc7677fd4ea2393bd3d1ddb1918092da654",
+      "packagedSha256": "7e3a86ed1f861383c45b0f0f339685a6ede458a8fca0951d7ef37686a86e9bbd"
+    },
+    "LICENSE": {
+      "sourceSha256": "05682f7fc3d6b66a30d9c0f3fc817158591a3995288ee99e8ccd9c1c4f69ed1a",
+      "packagedSha256": "05682f7fc3d6b66a30d9c0f3fc817158591a3995288ee99e8ccd9c1c4f69ed1a"
+    },
+    "SKILL.md": {
+      "sourceSha256": "c55aeea7a695321cdeadf5b79456d17c6caceecb5b89ad679ae3902de83a0472",
+      "packagedSha256": "116ffffdb8e504483bb8a4bcbfb449dce5013ea0b5f0fe5e8b697267dadae4b0"
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "sourceSha256": "fb769692a8e54d3eb0ff17d720e3020b7b5e15d438f4a0f12513ede07e9dc656",
+      "packagedSha256": "c35cabb0d3604ee64597648c45b36c5975900dd850e4d9dd56ce6db0fd992c9e"
+    },
+    "agents/openai.yaml": {
+      "sourceSha256": "a6b7aefca183094ff7c279cbf72a9ba7d259ceddf18e320416300a3c36d3193b",
+      "packagedSha256": "7e0c2814b30e3bc1e24045c1ffb8f6476a4462d0732c069cc264df4efdc5756f"
+    },
+    "assets/remotion/package-lock.json": {
+      "sourceSha256": "2355946573222d51e288af9f736a9d922f5d30170b3e2f98618ffae21d466cfa",
+      "packagedSha256": "2355946573222d51e288af9f736a9d922f5d30170b3e2f98618ffae21d466cfa"
+    },
+    "assets/remotion/package.json": {
+      "sourceSha256": "8822422a9e2b5adbd237055a8c59d1119ee40a2de1636d3f28cd17a0e4dd1bbc",
+      "packagedSha256": "8822422a9e2b5adbd237055a8c59d1119ee40a2de1636d3f28cd17a0e4dd1bbc"
+    },
+    "assets/remotion/props.json": {
+      "sourceSha256": "a622a4aaf04c9f44fee220920443c542860b1570870b1addc042a04b6bf75ffc",
+      "packagedSha256": "a622a4aaf04c9f44fee220920443c542860b1570870b1addc042a04b6bf75ffc"
+    },
+    "assets/remotion/scripts/render.mjs": {
+      "sourceSha256": "9c8da74325edc918df98d220afef23b5588b5a471e17ca352824538cc78ba7d3",
+      "packagedSha256": "9c8da74325edc918df98d220afef23b5588b5a471e17ca352824538cc78ba7d3"
+    },
+    "assets/remotion/scripts/test-text.mjs": {
+      "sourceSha256": "3176cea01d9f660d2b8f3c51439cf57bf4fad4f9ee08fc560c3fd243cede3a63",
+      "packagedSha256": "3176cea01d9f660d2b8f3c51439cf57bf4fad4f9ee08fc560c3fd243cede3a63"
+    },
+    "assets/remotion/src/MotionText.jsx": {
+      "sourceSha256": "7a22e98024f0d6061b6d1aa1d4ef516ede731eac8f8459fb8bb63464e9bbf8a9",
+      "packagedSha256": "7f1d50f5e6e86003ba72c5466cfb9c538434f6bded7a3794f313003608788907"
+    },
+    "assets/remotion/src/TGUp.jsx": {
+      "sourceSha256": "459860c19b45c0cef485f9c72b8341187196a89f8107c93cc05fb8bd7ae90e5e",
+      "packagedSha256": "934603ff79e2695fa6b738502e6112e19d62b61a51f733f552c9c83e744ff4e9"
+    },
+    "assets/remotion/src/index.jsx": {
+      "sourceSha256": "72bc60f712083f95603e5cddc5a129373e73865d3f9f940b678bc71b2a3fc726",
+      "packagedSha256": "72bc60f712083f95603e5cddc5a129373e73865d3f9f940b678bc71b2a3fc726"
+    },
+    "assets/remotion/src/motion.mjs": {
+      "sourceSha256": "b300f55a870f9422dda13e76c3278eb5e8c236c86b6bca7ae07f7ca89713e155",
+      "packagedSha256": "4bc1ba041b503b073294497d98d079f65c1754d1330617c250c6498915b6386d"
+    },
+    "base/LICENSE": {
+      "sourceSha256": "05682f7fc3d6b66a30d9c0f3fc817158591a3995288ee99e8ccd9c1c4f69ed1a",
+      "packagedSha256": "05682f7fc3d6b66a30d9c0f3fc817158591a3995288ee99e8ccd9c1c4f69ed1a"
+    },
+    "base/THIRD_PARTY_NOTICES.md": {
+      "sourceSha256": "b58f396b835d5d4780c0c33d11122b3dc9215a6a92839c0a9e1cddbe059ed460",
+      "packagedSha256": "b58f396b835d5d4780c0c33d11122b3dc9215a6a92839c0a9e1cddbe059ed460"
+    },
+    "base/WORKFLOW.md": {
+      "sourceSha256": "4aa9034e75757c4fffe514d16dd6e8d835b5f45fcdb212222cc5fdeea29ab347",
+      "packagedSha256": "680782601dffb0d2aff9bd51c97b5b463af3d5a00afa3d2753266fe980c1ecf9"
+    },
+    "base/assets/motion-presets/approved-v4.json": {
+      "sourceSha256": "4705c5c3ac3614f6685381a21557c3f02c4402e13410cf823cb8c364362b113a",
+      "packagedSha256": "18db5457365c48f1af7069f7efe4289123a414c009cb226c55b12e113f0e1f3b"
+    },
+    "base/assets/text-motion/TextMotion.swift": {
+      "sourceSha256": "cd06545b8af806fb4461490778f93a0a66d2af99bc2b1df4f4129f1e136ad9ec",
+      "packagedSha256": "b0dba1a438636e939ccea7cf8cc218102ebcf3974438daf9a92e5cc3ea9c8015"
+    },
+    "base/assets/text-motion/MotionTextRenderer.swift": {
+      "sourceSha256": "d9cc9358ea33da1de653fb7f067f1f8ef5b0230c60bc0eda558d9a4cd68daff1",
+      "packagedSha256": "fcd0dccae014f752ad9d433347499b78055a68dfddef102502e022ec876bf044"
+    },
+    "base/assets/text-motion/motion.mjs": {
+      "sourceSha256": "b300f55a870f9422dda13e76c3278eb5e8c236c86b6bca7ae07f7ca89713e155",
+      "packagedSha256": "4bc1ba041b503b073294497d98d079f65c1754d1330617c250c6498915b6386d"
+    },
+    "base/assets/text-motion/web.mjs": {
+      "sourceSha256": "76d2f5d62d3a7360df6b1c7a5d3df94267f7add7c040c560d4b082f07916c694",
+      "packagedSha256": "76d2f5d62d3a7360df6b1c7a5d3df94267f7add7c040c560d4b082f07916c694"
+    },
+    "base/references/approved-motion.md": {
+      "sourceSha256": "a8cdb8e838a9b3a8097b49f5f5bbbcf578b96356408fb7e5af31247cd7dafa20",
+      "packagedSha256": "7d36eacac6a33fa44789bd76f915bbe0a67e007cc13fee4c6ce6ac5fc34527fd"
+    },
+    "base/references/camera-motion.md": {
+      "sourceSha256": "dbef82e9fdb39f4cf896d06d444f2ef6823a59b460fdd00fec3168778e208315",
+      "packagedSha256": "073801eb60253035b6f21ba0b693b18aa797cfa6f03144fcd5ed003074c4c68d"
+    },
+    "base/references/corpus/ai-response.md": {
+      "sourceSha256": "c85b640abbf4a5a29e938fdf51ceca141db3701584201f4ceafa57a301afcca9",
+      "packagedSha256": "c85b640abbf4a5a29e938fdf51ceca141db3701584201f4ceafa57a301afcca9"
+    },
+    "base/references/corpus/attention.md": {
+      "sourceSha256": "6f14841ab2e259ce269627c6454151ebcd8b18a5f63e2a01a8da31b2d53aa436",
+      "packagedSha256": "6f14841ab2e259ce269627c6454151ebcd8b18a5f63e2a01a8da31b2d53aa436"
+    },
+    "base/references/corpus/control-feedback.md": {
+      "sourceSha256": "b06dcd7e175369e0aee73a1d0d0dd59820e3323d0b2609b29ea10c12a31fa1c0",
+      "packagedSha256": "b06dcd7e175369e0aee73a1d0d0dd59820e3323d0b2609b29ea10c12a31fa1c0"
+    },
+    "base/references/corpus/data/527-focus-card-measurement.json": {
+      "sourceSha256": "b3e852744a1d65f0aed2e1faff95f3f1c04914f51bf8bf779f93b59081488408",
+      "packagedSha256": "b3e852744a1d65f0aed2e1faff95f3f1c04914f51bf8bf779f93b59081488408"
+    },
+    "base/references/corpus/data/527-focus-card-width.csv": {
+      "sourceSha256": "dde6d8e05c8b913deecb33c97f6b76ae1665d143533eb68b318e23430bd090bb",
+      "packagedSha256": "269fd9171c4fec5bf46ab980a411986aa832052238db56653621bf4d003fb7ea"
+    },
+    "base/references/corpus/data/546-scroll-label-method.json": {
+      "sourceSha256": "8ca5b4becc07c5eefe8b200c175367d8dcf19b656dcbfa9f9d598cb8e1514a48",
+      "packagedSha256": "8ca5b4becc07c5eefe8b200c175367d8dcf19b656dcbfa9f9d598cb8e1514a48"
+    },
+    "base/references/corpus/data/546-scroll-label-proof.jpg": {
+      "sourceSha256": "a241805cba85119785a2056d48f0f6adf3bc97952ba46e8a801563b5bf8d8c84",
+      "packagedSha256": "a241805cba85119785a2056d48f0f6adf3bc97952ba46e8a801563b5bf8d8c84"
+    },
+    "base/references/corpus/data/546-scroll-label-proxy.csv": {
+      "sourceSha256": "0f9522b068772ef7516d175d2ad77588148e3a9eb7057229d7707a90b7ef6b19",
+      "packagedSha256": "771da851827a0bf9419d610b12586a0b2bae4c5fb59658437c7aa747c2532ed6"
+    },
+    "base/references/corpus/data/550-tile-phases.json": {
+      "sourceSha256": "b67e4f8f3cbd49b5fe851151807eea78d9caacfb580d2a1687998957a9d6621c",
+      "packagedSha256": "b67e4f8f3cbd49b5fe851151807eea78d9caacfb580d2a1687998957a9d6621c"
+    },
+    "base/references/corpus/data/550-tile.csv": {
+      "sourceSha256": "42ea9d4f78202e6302e149f939a1800a95f2c6e54428c7279876ec7ef3b6fe54",
+      "packagedSha256": "3526db098b8053a035bd305a4a210726aa6672a3395bb1046992f4116e8006ec"
+    },
+    "base/references/corpus/data/551-row-phases.json": {
+      "sourceSha256": "f2fabc20e67428f7df86b096d45069aaccd2ff3f84d9387495710cb893e27c97",
+      "packagedSha256": "f2fabc20e67428f7df86b096d45069aaccd2ff3f84d9387495710cb893e27c97"
+    },
+    "base/references/corpus/data/551-row.csv": {
+      "sourceSha256": "4bbe5ed41db58b3a0ff2ad7f8801f852c9fe902ba1655e35d6abecd3372092a4",
+      "packagedSha256": "af0348eddd6561e9b4ffbe36fc4f3c72d4fd19a731cf680ce19686602b369379"
+    },
+    "base/references/corpus/data/551-scroll.csv": {
+      "sourceSha256": "1ca1608cbfdfed2f7aa6e698d7bbefa43c5e7afc04cf0b239a6bc58128818c41",
+      "packagedSha256": "eeb1d2770b7f59cfd18c390cbec264cd83afa56e40498aaa575092c75c3a2623"
+    },
+    "base/references/corpus/data/552-link-wave.csv": {
+      "sourceSha256": "43718100e840f9fcda1c8d74fd2d97272b95b56a0467560488b24b6e022c529a",
+      "packagedSha256": "e4c8c1c4ec2e03eda0dd96102f7b6c5d7cdcdf815c50b8ebf6982b6043bf8d9b"
+    },
+    "base/references/corpus/data/552-measurement.json": {
+      "sourceSha256": "c2bb987ba87d8c358b79c8818f5ecee0c6aab4b7ca3e714d2fb571263c0baa48",
+      "packagedSha256": "c2bb987ba87d8c358b79c8818f5ecee0c6aab4b7ca3e714d2fb571263c0baa48"
+    },
+    "base/references/corpus/data/553-header-span.csv": {
+      "sourceSha256": "159156a358a7733f9aba36d8d6f81e5e096257449bd3c7517c30379ed042d962",
+      "packagedSha256": "cdabbf0e9f118901bae5cf9106c8f972da234b6301c2339e18b695101e967c77"
+    },
+    "base/references/corpus/data/553-scroll.csv": {
+      "sourceSha256": "280226afdb2107d4f56796cce08e557637e27b9120271fe11670df215a425325",
+      "packagedSha256": "2f42b154561ee0fa74030aa4c4b562110bdd30b97b5fad24ac475f595d2a1526"
+    },
+    "base/references/corpus/data/554-title-ink.csv": {
+      "sourceSha256": "206c974f9c8d80288defbb74e696defcd6c380d9e3655142398ed5f8bab3583e",
+      "packagedSha256": "0ddd5aad4933ba82daa764eabf59c573a2bfa876b50bd944171bf7421b663c6d"
+    },
+    "base/references/corpus/data/554-title-measurement.json": {
+      "sourceSha256": "aa825107001399b2d78ba31fce07908d9f79bc729fe2ad8151bc09e5867ec6b3",
+      "packagedSha256": "aa825107001399b2d78ba31fce07908d9f79bc729fe2ad8151bc09e5867ec6b3"
+    },
+    "base/references/corpus/data/555-bezel.json": {
+      "sourceSha256": "76d830edf4db54c09ecca3358f27bf85df936c91c84d75f9f414ece92cf5cecc",
+      "packagedSha256": "76d830edf4db54c09ecca3358f27bf85df936c91c84d75f9f414ece92cf5cecc"
+    },
+    "base/references/corpus/data/556-input-ink.csv": {
+      "sourceSha256": "fd6643db245a6ed960071ff8570901ad5e8195d73b958fa042a5305d4f861fc2",
+      "packagedSha256": "785b600f8a2bf0c99d2983a6c8f23d9d5f6210b24affc9de2eb4679d2191f669"
+    },
+    "base/references/corpus/data/556-input-measurement.json": {
+      "sourceSha256": "a4c10baaa4e67d3fc571db5d4a62afc07d1ac69a62f9a5b626685088d09d56ac",
+      "packagedSha256": "a4c10baaa4e67d3fc571db5d4a62afc07d1ac69a62f9a5b626685088d09d56ac"
+    },
+    "base/references/corpus/data/557-outline-ink.csv": {
+      "sourceSha256": "8816d30c8fbd1294a2fe46fe129b7a6e89cc32e8790f80853ad5bb383879c16d",
+      "packagedSha256": "e0a77998bc90ab299f6c730d3ac0a58b7e33974f8ad630c4221e2461b7767672"
+    },
+    "base/references/corpus/data/557-outline-measurement.json": {
+      "sourceSha256": "f5e6e91c385038ead84ecc6ce172d9f5e599f9b91d92243b2e7728533e82c005",
+      "packagedSha256": "f5e6e91c385038ead84ecc6ce172d9f5e599f9b91d92243b2e7728533e82c005"
+    },
+    "base/references/corpus/data/558-camera-measurement.json": {
+      "sourceSha256": "d577dd0a973dd736d70b9fff617c7452a5a0c1d6f1dcbc65ecf2a7c7cdda5ee0",
+      "packagedSha256": "d577dd0a973dd736d70b9fff617c7452a5a0c1d6f1dcbc65ecf2a7c7cdda5ee0"
+    },
+    "base/references/corpus/data/558-camera-width.csv": {
+      "sourceSha256": "c84fee3acfa296169112b2d9b48e28146c2d69562064f982b50a7c292d07f882",
+      "packagedSha256": "b8eb6ca5294a88938dd23d421010979628e921e2e7cec2139b67d59ee866092d"
+    },
+    "base/references/corpus/data/559-bezel-measurement.json": {
+      "sourceSha256": "d370bab31b82acb28ba6451c05572833d0b364f1af2f576537fb5ca6d22ddebb",
+      "packagedSha256": "d370bab31b82acb28ba6451c05572833d0b364f1af2f576537fb5ca6d22ddebb"
+    },
+    "base/references/corpus/data/560-bezel-measurement.json": {
+      "sourceSha256": "06a42067b682786a1c7f0ff54589566d215f9004dbbe8cad2f61fb79627fe566",
+      "packagedSha256": "06a42067b682786a1c7f0ff54589566d215f9004dbbe8cad2f61fb79627fe566"
+    },
+    "base/references/corpus/data/560-connect-measurement.json": {
+      "sourceSha256": "901361bc7cd1b17d96daafcb7c4f3f16ae1e4d48da27b719e84713bbb9ec37c4",
+      "packagedSha256": "901361bc7cd1b17d96daafcb7c4f3f16ae1e4d48da27b719e84713bbb9ec37c4"
+    },
+    "base/references/corpus/data/560-connect-width.csv": {
+      "sourceSha256": "0221f4ef9a7eb45b5387cac46460dbac8e38ba66a39f5be2da854503f2a0ba81",
+      "packagedSha256": "dc86de483e6b153ac22f9aea491829cfb5ad4618aa363182da764be3371c19f6"
+    },
+    "base/references/corpus/data/561-bezel-measurement.json": {
+      "sourceSha256": "2ab9131ee378db748db03cce7294477ca1aaeaaefbdbba5d9cd9f96245329864",
+      "packagedSha256": "2ab9131ee378db748db03cce7294477ca1aaeaaefbdbba5d9cd9f96245329864"
+    },
+    "base/references/corpus/data/561-pending-ink.csv": {
+      "sourceSha256": "5a91cd771c98800086c7b87e55d35972c6f4cf552f42dc28fa534f5cb999d7b9",
+      "packagedSha256": "2c3bff8d24704351cb8671d1dd7ac52c65462e8679ee8d22f6b77990f0663406"
+    },
+    "base/references/corpus/data/561-pending-measurement.json": {
+      "sourceSha256": "8d88a0e7481876d3ce704f93edceda924ac1deb0846157ef68f1a32365420209",
+      "packagedSha256": "8d88a0e7481876d3ce704f93edceda924ac1deb0846157ef68f1a32365420209"
+    },
+    "base/references/corpus/data/562-bezel-measurement.json": {
+      "sourceSha256": "ac87f0aa68e84c31fbd749ac0e3f703d6d7a1fe24f1118fd7fee525169cb8626",
+      "packagedSha256": "ac87f0aa68e84c31fbd749ac0e3f703d6d7a1fe24f1118fd7fee525169cb8626"
+    },
+    "base/references/corpus/data/562-settings-scroll-measurement.json": {
+      "sourceSha256": "d7a466ca42b63140e10a9ac8c96213bd258d9000d90bb1b21aa2cf8fc2dd336a",
+      "packagedSha256": "d7a466ca42b63140e10a9ac8c96213bd258d9000d90bb1b21aa2cf8fc2dd336a"
+    },
+    "base/references/corpus/data/562-settings-scroll.csv": {
+      "sourceSha256": "8233b7ad3d4bd06473465381a3a6924d1a26da4d9f78046217521ac118a7b9c4",
+      "packagedSha256": "481066cd13bad54e576806955f4b8f7659576cf1b1b0bfc5544523f304fe153d"
+    },
+    "base/references/corpus/data/563-bezel-measurement.json": {
+      "sourceSha256": "316a5f711c19e9bd7fb7ac55f845bb4697b8e569355c0d50fed85f28827a3f7e",
+      "packagedSha256": "316a5f711c19e9bd7fb7ac55f845bb4697b8e569355c0d50fed85f28827a3f7e"
+    },
+    "base/references/corpus/data/563-toast-bounds.csv": {
+      "sourceSha256": "fea28e672eee51b23fd6ce85ffe41c2680ead20aa11b71a5f5ffceb9d5b52c0c",
+      "packagedSha256": "e32b4b330ec4a71e11d58ee5376a1f2789d5cf94ce6693aaac7164321ea0b204"
+    },
+    "base/references/corpus/data/563-toast-measurement.json": {
+      "sourceSha256": "5a60abdd1bac6ae847c62303f6ceceea6e86d237f9712f043f24d9d1d082888b",
+      "packagedSha256": "5a60abdd1bac6ae847c62303f6ceceea6e86d237f9712f043f24d9d1d082888b"
+    },
+    "base/references/corpus/data/564-attribution-white-prefix-measurement.json": {
+      "sourceSha256": "fd0dc39e0284b09926f6b76ab19973eeca92904a4f559805478119b561e28474",
+      "packagedSha256": "16cc882f04784ba40f3ee51ad91af1ced1df44842a16d9d1fee68fdf657f9aa7"
+    },
+    "base/references/corpus/data/564-attribution-white-prefix.csv": {
+      "sourceSha256": "b1e66b845020de2b9af02578500d02f77968f2e88c1c243ceaa6a58ac4666672",
+      "packagedSha256": "2c7e93a5b5be3c234a9f422cd14cf5f5850a974d5bc26e9bee7f0f088b8c9e58"
+    },
+    "base/references/corpus/data/564-reply-left-ink-measurement.json": {
+      "sourceSha256": "cc7706a5b477dd38d6ae6e7532f1c611e7c563924767bd16513c0d653017120e",
+      "packagedSha256": "517ed6afa73a494f5544b0cf0511223b5f5751d119c2ba6eaba4425c4d2c3a2e"
+    },
+    "base/references/corpus/data/564-reply-left-ink.csv": {
+      "sourceSha256": "f968a446694c384fac73f337690e51b5763a56691e80d0bc86421535e786ed99",
+      "packagedSha256": "d7345d500dd2d28931b4da197f000daa7df92aaeee5f6ccae193ecbe838378f3"
+    },
+    "base/references/corpus/data/566-header-y-measurement.json": {
+      "sourceSha256": "b91227465af43c0b1392abc31b42b2718c79701dfc6b33466c612c19b6904e28",
+      "packagedSha256": "b91227465af43c0b1392abc31b42b2718c79701dfc6b33466c612c19b6904e28"
+    },
+    "base/references/corpus/data/566-header-y-proof.jpg": {
+      "sourceSha256": "7c4c7a8e4057df4f2774fa3cfca0074c6c003d19412632abfc9a194e62c3755e",
+      "packagedSha256": "7c4c7a8e4057df4f2774fa3cfca0074c6c003d19412632abfc9a194e62c3755e"
+    },
+    "base/references/corpus/data/566-header-y.csv": {
+      "sourceSha256": "82973f1638d76b3bd7c0755881b6f0cc881d7b264cf644feaaf9b780ec62d821",
+      "packagedSha256": "d3e31f9a75a032854710600404df11825b707bdd30ab765c0f6f58d8aa0799fa"
+    },
+    "base/references/corpus/data/567-stop-fill-measurement.json": {
+      "sourceSha256": "23b4a51e5f466032c0f7510717a47e5f6bf969538d619f7ffc1db83416ce647d",
+      "packagedSha256": "23b4a51e5f466032c0f7510717a47e5f6bf969538d619f7ffc1db83416ce647d"
+    },
+    "base/references/corpus/data/567-stop-fill-proof.jpg": {
+      "sourceSha256": "03f59250009a19a1123d4ca836098fe489e205c7418b96389ca0250d6bd22778",
+      "packagedSha256": "03f59250009a19a1123d4ca836098fe489e205c7418b96389ca0250d6bd22778"
+    },
+    "base/references/corpus/data/567-stop-fill.csv": {
+      "sourceSha256": "2b770c0488f9d0f3cced9704eb99edb3e20486310dd278d76dd0634e696ab818",
+      "packagedSha256": "50db7ff22100bef89d33c12cacb42ed604ddfcb0af3f23783c6775c6c52e815b"
+    },
+    "base/references/corpus/data/568-last-glyph-ink.csv": {
+      "sourceSha256": "042e181b123c64a15079dd2ab567bf820f8ba31fdc81a3a27dbafbba938114f9",
+      "packagedSha256": "dbc128c2ef1fb482920d2fe31451b78d7c2330be0394fd4c4bca9db6f00cc981"
+    },
+    "base/references/corpus/data/568-last-glyph-measurement.json": {
+      "sourceSha256": "bcd9cd22eb4eac55e380154359f704b08161b429b9f84c2ea6f2aac2937da0c2",
+      "packagedSha256": "bcd9cd22eb4eac55e380154359f704b08161b429b9f84c2ea6f2aac2937da0c2"
+    },
+    "base/references/corpus/data/568-last-glyph-proof.jpg": {
+      "sourceSha256": "fd6e4a673c1875f5591f1ea5355d02b59775525ea2730ed19280d44faf97ad1b",
+      "packagedSha256": "fd6e4a673c1875f5591f1ea5355d02b59775525ea2730ed19280d44faf97ad1b"
+    },
+    "base/references/corpus/data/569-emotional-focus-native-notes.json": {
+      "sourceSha256": "f3ddb012d365cdd0519ad21966408aae6377b4ee6dc55dc57d0c04868fb807b1",
+      "packagedSha256": "f3ddb012d365cdd0519ad21966408aae6377b4ee6dc55dc57d0c04868fb807b1"
+    },
+    "base/references/corpus/data/570-manual-circle-anchors.jpg": {
+      "sourceSha256": "5f93d8651282a9759539bb9843e84b72b971685a6699c2466615fc46a351a9a6",
+      "packagedSha256": "5f93d8651282a9759539bb9843e84b72b971685a6699c2466615fc46a351a9a6"
+    },
+    "base/references/corpus/data/570-manual-circle-measurement.json": {
+      "sourceSha256": "ee60f503a944fff3898e69f844f9ed60cdaf2f80992d5ebb4e8ec203ee063eb0",
+      "packagedSha256": "ee60f503a944fff3898e69f844f9ed60cdaf2f80992d5ebb4e8ec203ee063eb0"
+    },
+    "base/references/corpus/data/570-waveform-history-measurement.json": {
+      "sourceSha256": "e327cfc3c66111d1ba60bf68a333b5403cdf79f808dd8ed0464c9c0d33cb502b",
+      "packagedSha256": "65272e21d3fa696b223fb6bfe55e0d1dfd358a7b6aec5d2f20d9e01c9e13d651"
+    },
+    "base/references/corpus/data/570-waveform-history-proof.jpg": {
+      "sourceSha256": "edbb3f134c27c13e4140cd1a1275ce69971a3cc11ac5ffbfed4012cf3ea7f55a",
+      "packagedSha256": "edbb3f134c27c13e4140cd1a1275ce69971a3cc11ac5ffbfed4012cf3ea7f55a"
+    },
+    "base/references/corpus/data/570-waveform-history.csv": {
+      "sourceSha256": "7b85b7f53550e4264e46f87b4f8f9a38439e91e505981a87d9c282cc7c44d6e0",
+      "packagedSha256": "8250d0e51520cd40983c330c5ef214cae3d94a495663564a6903efb1b8f9cadd"
+    },
+    "base/references/corpus/data/571-horizontal-grid-measurement.json": {
+      "sourceSha256": "482fadc8e7a9aafeaebcf5926a35920fbe2c460c792a230075f723b9f8fc0315",
+      "packagedSha256": "482fadc8e7a9aafeaebcf5926a35920fbe2c460c792a230075f723b9f8fc0315"
+    },
+    "base/references/corpus/data/571-horizontal-grid-proof.jpg": {
+      "sourceSha256": "28cad6048158e669af13aa067fdb4ec0023491ba55f6279d40796b82797f6216",
+      "packagedSha256": "28cad6048158e669af13aa067fdb4ec0023491ba55f6279d40796b82797f6216"
+    },
+    "base/references/corpus/data/571-horizontal-grid.csv": {
+      "sourceSha256": "45519216df24b12af4ddfb6844bc7ccbfe5dc210298c89b42857f2822df4fa3c",
+      "packagedSha256": "0c6ccb564a55441780243c46c49c6c2ae620b8567c8cf848c45aee4ba8807af5"
+    },
+    "base/references/corpus/data/571-title-y-measurement.json": {
+      "sourceSha256": "463306461c35ef97778538648f829112c6f5c6bd89385d214759a1dcf2ecedb6",
+      "packagedSha256": "b6b7df6349eaec44b566fd73cb95ec4cbc76fa531527e747dad6913f86e90833"
+    },
+    "base/references/corpus/data/571-title-y-proof.jpg": {
+      "sourceSha256": "b08cdb14cb2190015ec508212adf87ebda43690e4c95753894c6aa7e11562e4b",
+      "packagedSha256": "b08cdb14cb2190015ec508212adf87ebda43690e4c95753894c6aa7e11562e4b"
+    },
+    "base/references/corpus/data/571-title-y.csv": {
+      "sourceSha256": "73f7b16f011b4032ec978e7f094f214abbd69da00341aaa026c6d25bd2d6e4bd",
+      "packagedSha256": "8e9aae1f0b73a735ccc4b382a2f0f0b0b005a95b0d4c92e13aefe23a3d2daf99"
+    },
+    "base/references/corpus/data/572-native-phase-notes.json": {
+      "sourceSha256": "d902e39d8b1d844400ffea33c20d6c8be5c8b0e70600f55a07bccee1ff29bcd9",
+      "packagedSha256": "d902e39d8b1d844400ffea33c20d6c8be5c8b0e70600f55a07bccee1ff29bcd9"
+    },
+    "base/references/corpus/data/573-native-phase-notes.json": {
+      "sourceSha256": "9383cd05023dab51b820e9319c6587e971bb701d2b3a9a455a860a3759fee4f3",
+      "packagedSha256": "9383cd05023dab51b820e9319c6587e971bb701d2b3a9a455a860a3759fee4f3"
+    },
+    "base/references/corpus/data/574-camera-hardware-method.json": {
+      "sourceSha256": "fd699faf267528eef1eda6b60a083e233f35b10ca3757b3e14c9c3035b09335f",
+      "packagedSha256": "fd699faf267528eef1eda6b60a083e233f35b10ca3757b3e14c9c3035b09335f"
+    },
+    "base/references/corpus/data/574-camera-hardware-proof.jpg": {
+      "sourceSha256": "72c0a9deb95be665a71f74db4cbab70f4ee123136da80ba48efc7f5e4ffcf2b0",
+      "packagedSha256": "72c0a9deb95be665a71f74db4cbab70f4ee123136da80ba48efc7f5e4ffcf2b0"
+    },
+    "base/references/corpus/data/574-camera-hardware.csv": {
+      "sourceSha256": "c5e27e4cf35a83178a45508854267433fd716a39ebef8b557410a73bead37afe",
+      "packagedSha256": "5db89dc255ce7fd50759fe9fa5cbd8da2288880d317eef7e26924e5c905258bf"
+    },
+    "base/references/corpus/data/575-hand-color-proof.jpg": {
+      "sourceSha256": "99e88fc3997da0325f1a4a3ba02d97c64202744c04ebfffdbca450c9636ec99a",
+      "packagedSha256": "99e88fc3997da0325f1a4a3ba02d97c64202744c04ebfffdbca450c9636ec99a"
+    },
+    "base/references/corpus/data/575-hand-color-proxy.json": {
+      "sourceSha256": "3d355d935174b1f8a67c2b69e2f02ea484475ba2125d4fd306af00303dba9c18",
+      "packagedSha256": "3d355d935174b1f8a67c2b69e2f02ea484475ba2125d4fd306af00303dba9c18"
+    },
+    "base/references/corpus/data/deep-events.json": {
+      "sourceSha256": "5c4b53290b2d0901557c6115c8496c0ed9e75bb1369b17e9cd09ab06be60e4f5",
+      "packagedSha256": "be1b16a76ae5328f4e9c5b50de4f619a0e51db8e7b14a571b7ce9cac524aedbb"
+    },
+    "base/references/corpus/data/deep-scenes.json": {
+      "sourceSha256": "30ffc0a45047efbb6575d38ff6be9462d9747b35ac4cd877109591dfa3da4f3a",
+      "packagedSha256": "30ffc0a45047efbb6575d38ff6be9462d9747b35ac4cd877109591dfa3da4f3a"
+    },
+    "base/references/corpus/emotional-focus.md": {
+      "sourceSha256": "44efd1345efb87cfd668fd56e1628dea4ca413fdda699b46bb4b6518343bd003",
+      "packagedSha256": "44efd1345efb87cfd668fd56e1628dea4ca413fdda699b46bb4b6518343bd003"
+    },
+    "base/references/corpus/index.md": {
+      "sourceSha256": "32a230e91043cc7d07c3a0ea63d9cb230b7fd521cf6970e9fde0b8dfbaaef735",
+      "packagedSha256": "813aabd918edc681a1a034219deef1b47f7b49f114e515198e10686cfae244ab"
+    },
+    "base/references/corpus/input-and-surfaces.md": {
+      "sourceSha256": "9199963001ee817896bd3097c4e1d4db9d813a2e9c8fad33d020da5c2d4fc35e",
+      "packagedSha256": "9199963001ee817896bd3097c4e1d4db9d813a2e9c8fad33d020da5c2d4fc35e"
+    },
+    "base/references/corpus/narrative-and-focus.md": {
+      "sourceSha256": "f266acde17421263c46adae8e3e9346f3f1667f0495df4132c4b40e9027945bc",
+      "packagedSha256": "29d940a5d69608bdf81eaef21119022af37005329deb69f2bbbcd865962a0c4f"
+    },
+    "base/references/corpus/pacing.md": {
+      "sourceSha256": "1c81811ea6af6fad7401bacffe9a59c6952bd6ca753be1a668bac6fba593e485",
+      "packagedSha256": "1c81811ea6af6fad7401bacffe9a59c6952bd6ca753be1a668bac6fba593e485"
+    },
+    "base/references/corpus/scroll.md": {
+      "sourceSha256": "0a6873ff1a1b488b8d1cf39890341db802b78d073c7b8db4c8dc999dcaefea28",
+      "packagedSha256": "0a6873ff1a1b488b8d1cf39890341db802b78d073c7b8db4c8dc999dcaefea28"
+    },
+    "base/references/layer-planning.md": {
+      "sourceSha256": "18b42a3273dd6400c7fa85f8a55cef7e2370bf5682f03d86050fedfdd7b6615a",
+      "packagedSha256": "18b42a3273dd6400c7fa85f8a55cef7e2370bf5682f03d86050fedfdd7b6615a"
+    },
+    "base/references/learning.md": {
+      "sourceSha256": "a032e8c16dae3dbacbc38eb78d21d8fde2243bf1980dc2ca9cd3ba6a0302da51",
+      "packagedSha256": "98feb6248dbfa6aae63043caf49725780a06bb3ada213b89c8187378074d7ae6"
+    },
+    "base/references/registration.md": {
+      "sourceSha256": "3edf60d0f7eb563bafe95b680c0fcf1c5c534e6c253b5ce48742c1a022a4e274",
+      "packagedSha256": "780f776afbaacac7f7f646d3a72f99d2dc4776d320f2238f4ce3080cc1951f2a"
+    },
+    "base/references/rendering.md": {
+      "sourceSha256": "8ece2c994063c0d92927222d37f205ab78cb5644167f6a47dfd329d7bee45feb",
+      "packagedSha256": "1be72431e5ed7a0e53e26749e50947f464ab6d4a57898db0b8950a9a9345a031"
+    },
+    "base/references/text-motion.md": {
+      "sourceSha256": "cbe8e887aed6ec161fff5e82f2b5a1abcd18407500cd139d6d9e7ae9eafcf989",
+      "packagedSha256": "511e76bc124dca939b4a943b3843048e60c26ac49b772929f7d61751ad7de459"
+    },
+    "base/references/tap-motion.md": {
+      "sourceSha256": "4053690ab4c3bb9f25609f583d9197818526035203a0e5978a9f6ea5b8f4c234",
+      "packagedSha256": "4053690ab4c3bb9f25609f583d9197818526035203a0e5978a9f6ea5b8f4c234"
+    },
+    "base/requirements.txt": {
+      "sourceSha256": "c07ff256a990ca5cecef380d906f1f066aca761a5095f2c664e3fad3b40d4949",
+      "packagedSha256": "c07ff256a990ca5cecef380d906f1f066aca761a5095f2c664e3fad3b40d4949"
+    },
+    "base/scripts/experience.py": {
+      "sourceSha256": "60e21d159af7ac342689fe693bd92bc062b89711d12bdf098c22e945b97fda2e",
+      "packagedSha256": "60e21d159af7ac342689fe693bd92bc062b89711d12bdf098c22e945b97fda2e"
+    },
+    "base/scripts/gestures.py": {
+      "sourceSha256": "9d7f1cd7c4dff9156b7971fdc2b5975271b6466f2c686dd23622927870bc38a9",
+      "packagedSha256": "9d7f1cd7c4dff9156b7971fdc2b5975271b6466f2c686dd23622927870bc38a9"
+    },
+    "base/scripts/layers.py": {
+      "sourceSha256": "b097a94b299a90466960419e7b138bb18e9d507f304dcdcfcc808b8d2e400ee1",
+      "packagedSha256": "b097a94b299a90466960419e7b138bb18e9d507f304dcdcfcc808b8d2e400ee1"
+    },
+    "base/scripts/motion_profile.py": {
+      "sourceSha256": "56ebc6912bf84752538ffe5d7dd5e4a3b2bb81225c8a645ed41b2f4117d0d349",
+      "packagedSha256": "56ebc6912bf84752538ffe5d7dd5e4a3b2bb81225c8a645ed41b2f4117d0d349"
+    },
+    "base/scripts/render.py": {
+      "sourceSha256": "15033c047913fe79743adf9b1500d0197f49909a40cc529b6e197f4a68344855",
+      "packagedSha256": "15033c047913fe79743adf9b1500d0197f49909a40cc529b6e197f4a68344855"
+    },
+    "base/scripts/test_experience.py": {
+      "sourceSha256": "15dee87257c8fa96fab60bacae627ad2b681c3c330b2511f132cfa84adb49ae0",
+      "packagedSha256": "15dee87257c8fa96fab60bacae627ad2b681c3c330b2511f132cfa84adb49ae0"
+    },
+    "base/scripts/test_gestures.py": {
+      "sourceSha256": "35eed2c6bd39af57af8421da038b003ed1f211265c8c85526b53bcfc9b7ae105",
+      "packagedSha256": "35eed2c6bd39af57af8421da038b003ed1f211265c8c85526b53bcfc9b7ae105"
+    },
+    "base/scripts/test_layers.py": {
+      "sourceSha256": "c7ce4c0682157f1df78186a72fda321808dba0a62119dd89f3d2b75b7465620d",
+      "packagedSha256": "c7ce4c0682157f1df78186a72fda321808dba0a62119dd89f3d2b75b7465620d"
+    },
+    "base/scripts/test_motion_profile.py": {
+      "sourceSha256": "55eaef3365b65e6b864a40c7d27a0f0386b497284ff9cf0b4a614eb20e579578",
+      "packagedSha256": "55eaef3365b65e6b864a40c7d27a0f0386b497284ff9cf0b4a614eb20e579578"
+    },
+    "base/scripts/test_render.py": {
+      "sourceSha256": "e757f3e96319c52bc70bb7e8c897872f3da67be2e05af1df46b7f36544e39256",
+      "packagedSha256": "e757f3e96319c52bc70bb7e8c897872f3da67be2e05af1df46b7f36544e39256"
+    },
+    "base/scripts/test_text_motion.mjs": {
+      "sourceSha256": "88c08ca0008054a7d2f43f67a4f4b90bc296f66c44a934b013b78f6753be232c",
+      "packagedSha256": "6f819cfb15a22588b7e8902f6f0c27482916b48b66af48e8c03e1682bffc5a78"
+    },
+    "base/scripts/vendor/LICENSE": {
+      "sourceSha256": "ff7fc6127b8e2e8403a8065cc3ce3bf9ec2664ea5febc6a1260936977fe76b54",
+      "packagedSha256": "ff7fc6127b8e2e8403a8065cc3ce3bf9ec2664ea5febc6a1260936977fe76b54"
+    },
+    "base/scripts/vendor/compose.py": {
+      "sourceSha256": "c362d8dffe31c3b97c98520184e76abb70b6b306763eebaa60a9e9c723002e12",
+      "packagedSha256": "05b2177ad0b9399b5d057b1c99f845bc0f9ac9b7592a900ec01829deaa9a4348"
+    },
+    "references/gestures.md": {
+      "sourceSha256": "a7d36fa9a66f00ae6cae6e4a6d81e57ee396e842096cea37c29c351208d81699",
+      "packagedSha256": "5d7bdba3a86c86f815d6266c47cd3856bce121d18231648b04b8d4de610ad2d8"
+    },
+    "references/remotion.md": {
+      "sourceSha256": "317d9d371bd8f263c81a768dd1ea407edd9b61c3fd436ac21d238ea5546a9535",
+      "packagedSha256": "d59bb9dbc178629509c9a3e7d543d5778bfe930d3aa6f71b68a5d5316afdad35"
+    },
+    "scripts/make_smoke.py": {
+      "sourceSha256": "79df6986710720499f1df377bfb01164b714ba1894ebddf3fe7742c1ef5d0e02",
+      "packagedSha256": "79df6986710720499f1df377bfb01164b714ba1894ebddf3fe7742c1ef5d0e02"
+    },
+    "scripts/test_plan.py": {
+      "sourceSha256": "1b2e268f47566423f4afa43edced627f849bcf54023b573fd96c730be340c194",
+      "packagedSha256": "1b2e268f47566423f4afa43edced627f849bcf54023b573fd96c730be340c194"
+    },
+    "scripts/tg_up.py": {
+      "sourceSha256": "736e812d945031744e1f044941023acd5f2a94b12cc21aa3ca480c236df8ab26",
+      "packagedSha256": "7ac6e4b8f058b3b487d58f630c3d67a8b3014b772794e4c22df47251959588d0"
+    }
+  }
+}

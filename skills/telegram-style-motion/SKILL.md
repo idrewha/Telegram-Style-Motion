@@ -1,6 +1,6 @@
 ---
 name: telegram-style-motion
-description: Create or refine iOS app promo videos with Telegram Tips pacing, phone bezels, purposeful camera moves and frosted animated tap indicators. Use for simulator-based product clips and revisions to their clicks, zooms or timing, including misaligned taps and recording-clock drift.
+description: Create or refine iOS app promo videos with Telegram Tips pacing, phone bezels, purposeful camera moves, frosted gestures, focusing and «Обычный» и «Эмоциональный» text. Use for simulator recordings or supplied interface footage, including revisions to clicks, scrolling, zooms and timing.
 license: MIT
 ---
 
@@ -85,6 +85,26 @@ The reference supports this motion profile, not a unique spring engine or exact 
 - Do not trust file birth time or one global offset for a multi-action recording. Normalize a preserved copy to the output frame rate, calibrate contacts against encoded frames, and use those same frames for marker removal, composition and audit. Per-contact markers are preferred when clock drift is observed; a visually identified response is a fallback with stated uncertainty.
 - Before implementing or correcting clicks/timing, read [registration and timing](references/registration.md). It covers coordinate conversion, frame anchors, mapping limits, and source/final-frame comparison for diagnosing clock drift.
 - Log the visible success reveal separately. Align audio to its encoded onset plus the authored delay. A native callback or extrapolation beyond the last contact is not independently verified visible-reveal timing. Derive the ending from captured completion/hold frames rather than extrapolating a drifting clock or silently cloning the final frame.
+
+## Entity-based reference knowledge
+
+The owner names selective object emphasis **фокусирование (focusing)**. Use it occasionally when a particular interface detail needs explanation: isolate the real object, preserve its origin, optionally lift it beyond the mockup boundary, then restore it coherently. The [focusing recipe](references/corpus/attention.md) covers reusable layers, masks, phases and checked variants for different interfaces. It is independent of Telegram's component types and does not require a camera zoom or a tap on every emphasized object. The capture tools in this package remain iOS-oriented; this compositing knowledge also applies to supplied footage of other interfaces.
+
+The owner names selective stars, emoji and playful animated accents **эмоциональный фокус**. Consult [emotional focus](references/corpus/emotional-focus.md) for checked phase timing, moving-target attachment, bezel spill and the distinction between pre-action discovery, result acknowledgement and living identity. Use it when the communication benefits from that accent; it is not required at every step.
+
+For transferable object-emphasis decisions and native-frame measurements, consult
+the [measured reference library](references/corpus/index.md). Retrieve only the relevant
+entity: target geometry, entrance, material, hold, exit and relation to the next action.
+Keep source observations, approximate replay curves and app-specific choices separate.
+The newest50 of100 downloaded references have completed dense whole-source visual review, with392 checked event records and50 scene records. Native-frame measurements retain their uncertainty; visual review does not recover every original curve or engine. Use the entity recipes and evidence, not download counts, as the basis for a motion choice.
+
+## Text and gesture layers
+
+For «Обычный» и «Эмоциональный» glyph reveals and portable native/web adapters, read
+[«Обычный» и «Эмоциональный» text](references/text-motion.md). For measured moving frosted rings and
+the approved compact-swipe-v1 starting preset, read [gesture indicators](references/gestures.md).
+The renderer supports sprite, glint and swipe layers; editorial text/Studio/audio
+are available in the independently installable `tg-up` package in this repository.
 
 ## Existing implementations
 

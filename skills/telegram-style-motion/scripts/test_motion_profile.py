@@ -7,7 +7,7 @@ import unittest
 from motion_profile import camera_progress, tap_state
 
 sys.path.insert(0, str(Path(__file__).parent / "vendor"))
-from compose import reference_camera_progress, reference_ring_shape
+from compose import Camera, reference_camera_progress, reference_ring_shape
 
 
 class MotionProfileTests(unittest.TestCase):
@@ -22,6 +22,16 @@ class MotionProfileTests(unittest.TestCase):
         self.assertEqual(values[-1], 1)
         self.assertGreater(max(values), 1.01)
         self.assertLess(max(values), 1.02)
+
+    def test_projected_path_preserves_a_common_visible_edge(self):
+        bottom = 930
+        center = (210,456)
+        target = (210,bottom-(bottom-center[1])/1.5)
+        camera = Camera([(0,.75,1.5,target,'reference','projected')],center)
+        for i in range(91):
+            z,(_,fy)=camera.at(i/120)
+            self.assertAlmostEqual(z*(bottom-fy),bottom-center[1],places=9)
+        self.assertEqual(camera.at(1),(1.5,target))
 
     def test_tap_parity_and_contact_compression(self):
         for index in range(-500, 501):

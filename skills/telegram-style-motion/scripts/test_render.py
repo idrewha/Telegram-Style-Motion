@@ -59,6 +59,21 @@ class RenderTests(unittest.TestCase):
         self.assertEqual(int(stream["nb_read_frames"]), 60)
         subprocess.run(["ffmpeg", "-v", "error", "-xerror", "-i", str(self.out), "-f", "null", "-"], check=True)
 
+    def test_animated_backdrop_preserves_composition_clock_on_trim(self):
+        background = self.root / "animated-background.mp4"
+        subprocess.run([
+            "ffmpeg", "-v", "error", "-f", "lavfi", "-i",
+            "color=red:s=256x256:r=60:d=1.5,drawbox=x=0:y=0:w=iw:h=ih:color=blue:t=fill:enable='gte(t,0.5)'",
+            "-c:v", "libx264", "-pix_fmt", "yuv420p", str(background)
+        ], check=True)
+        result = self.render("--background-video", str(background), "--start", "0.5")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        pixel = subprocess.check_output([
+            "ffmpeg", "-v", "error", "-i", str(self.out), "-frames:v", "1",
+            "-vf", "crop=2:2:0:0", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"])
+        self.assertLess(pixel[0], 10)
+        self.assertGreater(pixel[2], 230)
+
     def test_trim_cannot_clone_an_unrecorded_tail(self):
         result = self.render("--end", "2")
         self.assertNotEqual(result.returncode, 0)

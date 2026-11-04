@@ -1,0 +1,155 @@
+{
+  "method": "Native strong red ink mask in local cropx110:790,y200:850, Strict red threshold(R>220,G<120,B<120) removes pink fill; initial permissive chroma threshold was rejected after F490 contaminated fill/letter edges; Delete is outside ROI beforeF500. Native croporigin(569,782). Interior median is rendered color proxy, not alpha.",
+  "peakInk": {
+    "frame": 486,
+    "seconds": 8.1,
+    "strongRedPixelCount": 15614,
+    "left": 150,
+    "top": 305,
+    "right": 756,
+    "bottom": 817,
+    "interiorMedianR": 239,
+    "interiorMedianG": 162,
+    "interiorMedianB": 166
+  },
+  "anchors": [
+    {
+      "frame": 444,
+      "seconds": 7.4,
+      "strongRedPixelCount": 0,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "interiorMedianR": 235,
+      "interiorMedianG": 203,
+      "interiorMedianB": 214
+    },
+    {
+      "frame": 446,
+      "seconds": 7.433333333333334,
+      "strongRedPixelCount": 767,
+      "left": 406,
+      "top": 306,
+      "right": 502,
+      "bottom": 313,
+      "interiorMedianR": 235,
+      "interiorMedianG": 201,
+      "interiorMedianB": 211
+    },
+    {
+      "frame": 450,
+      "seconds": 7.5,
+      "strongRedPixelCount": 3620,
+      "left": 250,
+      "top": 304,
+      "right": 657,
+      "bottom": 312,
+      "interiorMedianR": 238,
+      "interiorMedianG": 169,
+      "interiorMedianB": 174
+    },
+    {
+      "frame": 460,
+      "seconds": 7.666666666666667,
+      "strongRedPixelCount": 9844,
+      "left": 150,
+      "top": 305,
+      "right": 756,
+      "bottom": 643,
+      "interiorMedianR": 240,
+      "interiorMedianG": 159,
+      "interiorMedianB": 164
+    },
+    {
+      "frame": 470,
+      "seconds": 7.833333333333333,
+      "strongRedPixelCount": 12800,
+      "left": 150,
+      "top": 305,
+      "right": 756,
+      "bottom": 817,
+      "interiorMedianR": 237,
+      "interiorMedianG": 187,
+      "interiorMedianB": 194
+    },
+    {
+      "frame": 479,
+      "seconds": 7.983333333333333,
+      "strongRedPixelCount": 14639,
+      "left": 150,
+      "top": 305,
+      "right": 756,
+      "bottom": 817,
+      "interiorMedianR": 236,
+      "interiorMedianG": 185,
+      "interiorMedianB": 193
+    },
+    {
+      "frame": 484,
+      "seconds": 8.066666666666666,
+      "strongRedPixelCount": 15607,
+      "left": 150,
+      "top": 305,
+      "right": 756,
+      "bottom": 817,
+      "interiorMedianR": 238,
+      "interiorMedianG": 171,
+      "interiorMedianB": 174
+    },
+    {
+      "frame": 490,
+      "seconds": 8.166666666666666,
+      "strongRedPixelCount": 1120,
+      "left": 154,
+      "top": 311,
+      "right": 750,
+      "bottom": 810,
+      "interiorMedianR": 240,
+      "interiorMedianG": 157,
+      "interiorMedianB": 159
+    },
+    {
+      "frame": 499,
+      "seconds": 8.316666666666666,
+      "strongRedPixelCount": 0,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "interiorMedianR": 236,
+      "interiorMedianG": 187,
+      "interiorMedianB": 193
+    }
+  ],
+  "limits": "Ink area changes with drawing length, thickness, opacity and compression; not exact stroke-progress/easing. Partial-stroke bbox is not whole rounded rectangle geometry.",
+  "visualAudit": "Corrected strict red mask passes9anchorsF444/446/450/460/470/479/484/490/499. Initial loose chroma mask wrongly included fill and letter edges nearF490; rejected. Strict mask isolates strong stroke, loses faded stroke as expected; peak is not full-path-length proof.",
+  "phaseInterpretation": {
+    "strokeStartsApprox": 446,
+    "topSegmentWidthAtF450": 408,
+    "downBothSidesBy": 460,
+    "aroundLowerCornersBy": 470,
+    "nearlySurroundingWithBottomGap": 484,
+    "strokeFading": 488,
+    "strongRedGoneBy": 499,
+    "grainStarts": 501
+  },
+  "fillPulseEvidence": {
+    "455": [
+      240,
+      155,
+      159
+    ],
+    "475": [
+      236,
+      188,
+      194
+    ],
+    "490": [
+      240,
+      157,
+      159
+    ]
+  },
+  "fillPulseLimits": "Rendered interior median shows stronger-red / lighter / stronger-red cycle; not authored opacity, with background/glass/compression limits."
+}

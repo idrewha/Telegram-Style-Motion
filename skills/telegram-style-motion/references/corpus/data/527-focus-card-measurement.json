@@ -1,0 +1,6 @@
+{
+  "method": "Native crop x40,y260,1000x700. At crop y400 find outermost runs of5consecutive pixels minRGB>245. Border glints excluded by run length. All frames180..239. Four overlays audited separately. Proxy horizontal silhouette only, not material/corners/alpha or engine.",
+  "uncertaintyPx": 4,
+  "rejected": "Initial single-pixel threshold included bright screen-rim glints atF180and230, wrongly662wide. Retained old overlays audit-*.png as rejected; audited corrected overlays audit-fixed-*.png.",
+  "sourceFps": 60
+}

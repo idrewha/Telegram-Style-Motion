@@ -1,0 +1,96 @@
+{
+  "method": "Darkest averaged straight rim stripe y220:320 in540source. Width proxy only, endpoint uncertainty1\u20132px.",
+  "anchors": [
+    {
+      "frame": 0,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 90,
+      "left": 96,
+      "right": 442,
+      "span540": 346
+    },
+    {
+      "frame": 180,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 270,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 390,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 510,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 540,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 600,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 690,
+      "left": 97,
+      "right": 440,
+      "span540": 343
+    },
+    {
+      "frame": 780,
+      "left": 99,
+      "right": 440,
+      "span540": 341
+    },
+    {
+      "frame": 900,
+      "left": 97,
+      "right": 440,
+      "span540": 343
+    },
+    {
+      "frame": 960,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 1080,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 1170,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    },
+    {
+      "frame": 1199,
+      "left": 96,
+      "right": 440,
+      "span540": 344
+    }
+  ],
+  "visualAudit": "All15full-phone proof anchors inspected. Roughly constant344px width;341\u2013346proxy range includes local indicator/edge interference and1\u20132px endpoint uncertainty. No large whole-phone zoom established."
+}

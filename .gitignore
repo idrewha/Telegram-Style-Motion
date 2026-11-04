@@ -13,3 +13,9 @@ __pycache__/
 
 # Published README demonstration
 !docs/demo/Kino-AI-refined.mp4
+
+# Remotion workspaces and local render caches
+node_modules/
+.remotion/
+dist/
+**/public/base.mp4

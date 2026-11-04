@@ -1,0 +1,92 @@
+{
+  "method": "Native cyan Adding Options icon left-interior run at x458:472, R<135,G/B>165, abs(G-B)<45; top of longest run>25pixels below y450. Explicit passthrough frame output;91source frames510\u2013600.",
+  "visualAudit": "10full-context proof anchors inspected; native535/540/550/570 inspected. Icon absent below screen at510; first partial517, full520. Track is unoccluded by right-side glass switches.",
+  "anchors": [
+    {
+      "frame": "517",
+      "time": "8.616666666666667",
+      "cyanIconTop": "1874",
+      "cyanIconBottom": "1919"
+    },
+    {
+      "frame": "520",
+      "time": "8.666666666666666",
+      "cyanIconTop": "1706",
+      "cyanIconBottom": "1787"
+    },
+    {
+      "frame": "530",
+      "time": "8.833333333333334",
+      "cyanIconTop": "1291",
+      "cyanIconBottom": "1374"
+    },
+    {
+      "frame": "535",
+      "time": "8.916666666666666",
+      "cyanIconTop": "1160",
+      "cyanIconBottom": "1243"
+    },
+    {
+      "frame": "540",
+      "time": "9.0",
+      "cyanIconTop": "1063",
+      "cyanIconBottom": "1145"
+    },
+    {
+      "frame": "550",
+      "time": "9.166666666666666",
+      "cyanIconTop": "938",
+      "cyanIconBottom": "1020"
+    },
+    {
+      "frame": "560",
+      "time": "9.333333333333334",
+      "cyanIconTop": "877",
+      "cyanIconBottom": "959"
+    },
+    {
+      "frame": "565",
+      "time": "9.416666666666666",
+      "cyanIconTop": "864",
+      "cyanIconBottom": "945"
+    },
+    {
+      "frame": "568",
+      "time": "9.466666666666667",
+      "cyanIconTop": "860",
+      "cyanIconBottom": "942"
+    },
+    {
+      "frame": "570",
+      "time": "9.5",
+      "cyanIconTop": "860",
+      "cyanIconBottom": "941"
+    },
+    {
+      "frame": "580",
+      "time": "9.666666666666666",
+      "cyanIconTop": "860",
+      "cyanIconBottom": "941"
+    },
+    {
+      "frame": "590",
+      "time": "9.833333333333334",
+      "cyanIconTop": "860",
+      "cyanIconBottom": "941"
+    },
+    {
+      "frame": "599",
+      "time": "9.983333333333333",
+      "cyanIconTop": "860",
+      "cyanIconBottom": "941"
+    },
+    {
+      "frame": "600",
+      "time": "10.0",
+      "cyanIconTop": "884",
+      "cyanIconBottom": "965"
+    }
+  ],
+  "findings": "Icon top1706F520\u21921291F530\u21921063F540\u2192938F550\u2192877F560\u2192860F568; near rest569\u2013599. At first switch compression540, another203nativepx travel remains. Fourth switch wave coincides with arrival near570. F600+24px is beginning surface exit, not continued upward scroll.",
+  "limits": "Color threshold edge uncertainty about2\u20133px; first icon appearance clipped; no full hidden-path peak, physical finger/release or unique easing inferred. Local switch material and list motion are independent."
+}

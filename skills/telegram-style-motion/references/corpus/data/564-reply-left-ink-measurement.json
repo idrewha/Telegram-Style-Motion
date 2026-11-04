@@ -1,0 +1,114 @@
+{
+  "status": "audited for first unoccluded bright ink and left-band layout movement; not full-text completion",
+  "parameters": {
+    "directory": "external-study-archive/review/564-0/native-event/progressive-reply",
+    "start": 387,
+    "end": 501,
+    "box": "0,0,425,380",
+    "exclude_x": "",
+    "min_channel": 100,
+    "max_spread": 50,
+    "anchors": "387,391,392,393,400,420,450,490",
+    "name": "reply-left-ink"
+  },
+  "samples": [
+    {
+      "frame": 387,
+      "seconds": 6.45,
+      "inkPixels": 0,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "frame": 391,
+      "seconds": 6.516666666666667,
+      "inkPixels": 0,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "frame": 392,
+      "seconds": 6.533333333333333,
+      "inkPixels": 0,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "frame": 393,
+      "seconds": 6.55,
+      "inkPixels": 205,
+      "left": 60,
+      "top": 368,
+      "right": 161,
+      "bottom": 379,
+      "width": 102,
+      "height": 12
+    },
+    {
+      "frame": 400,
+      "seconds": 6.666666666666667,
+      "inkPixels": 4152,
+      "left": 52,
+      "top": 302,
+      "right": 402,
+      "bottom": 348,
+      "width": 351,
+      "height": 47
+    },
+    {
+      "frame": 420,
+      "seconds": 7.0,
+      "inkPixels": 8275,
+      "left": 52,
+      "top": 219,
+      "right": 424,
+      "bottom": 330,
+      "width": 373,
+      "height": 112
+    },
+    {
+      "frame": 450,
+      "seconds": 7.5,
+      "inkPixels": 12021,
+      "left": 52,
+      "top": 97,
+      "right": 424,
+      "bottom": 274,
+      "width": 373,
+      "height": 178
+    },
+    {
+      "frame": 490,
+      "seconds": 8.166666666666666,
+      "inkPixels": 16139,
+      "left": 52,
+      "top": 86,
+      "right": 424,
+      "bottom": 329,
+      "width": 373,
+      "height": 244
+    }
+  ],
+  "limits": "Bright-ink threshold proxy only. Count/span combine glyphs, antialiasing, opacity, motion, masking and compression. Crops/exclusions may omit content. No exact keystroke, alpha, font transform, engine or network latency inferred.",
+  "visualAudit": "All8maskproofanchorsandraw391/392/393/490inspected. F392has faint incoming ink below excluded band visible through composer;393firstqualifyingaboveboundary. Greenbox excludesToday/rightoutgoingmessage and lowercomposer; clips rightpartofreply.",
+  "findings": {
+    "firstFaintInkThroughComposerApprox": 392,
+    "firstUnoccludedThresholdInk": 393,
+    "requestCompression": 360,
+    "requestToFirstFaintSeconds": 0.5333333333333333,
+    "requestToThresholdSeconds": 0.55,
+    "visualFullReplyClearApprox": 490
+  }
+}

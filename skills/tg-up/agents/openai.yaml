@@ -1,0 +1,3 @@
+interface:
+  display_name: "tg up"
+  short_description: "Telegram-style ролики с Remotion и эффектами текста"

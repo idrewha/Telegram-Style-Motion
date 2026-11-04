@@ -1,0 +1,61 @@
+{
+  "feature": "Same Show100morecomments white-label proxy;16horizontal40px bands x650:1290; threshold allRGB>170; template source480 y750:800; row-profile NCC across source y350:1800.",
+  "scope": "Original1920 square frames417\u2013485 plus500/515 late-hold anchors; no physical gesture/release log.",
+  "limits": "Horizontal band profiles are an ink proxy, not full2D original text transform. Validate target identity in original anchors/proof. Threshold/AA position uncertainty about2px; no exact physics engine.",
+  "result": {
+    "minimum": {
+      "frame": 454,
+      "labelTemplateTop": 702,
+      "ncc": 0.999933
+    },
+    "anchors": [
+      {
+        "frame": 420,
+        "labelTemplateTop": 1688,
+        "ncc": 0.999281
+      },
+      {
+        "frame": 435,
+        "labelTemplateTop": 1167,
+        "ncc": 0.998608
+      },
+      {
+        "frame": 450,
+        "labelTemplateTop": 720,
+        "ncc": 0.999933
+      },
+      {
+        "frame": 465,
+        "labelTemplateTop": 734,
+        "ncc": 0.999906
+      },
+      {
+        "frame": 480,
+        "labelTemplateTop": 750,
+        "ncc": 1.0
+      }
+    ],
+    "scoreRange": [
+      0.800192,
+      1.0
+    ],
+    "lateTail480": {
+      "frame": 480,
+      "labelTemplateTop": 750,
+      "ncc": 1.0
+    },
+    "restAnchors": [
+      {
+        "frame": 500,
+        "labelTemplateTop": 752,
+        "ncc": 0.999991
+      },
+      {
+        "frame": 515,
+        "labelTemplateTop": 752,
+        "ncc": 0.999991
+      }
+    ],
+    "interpretation": "Template top1688at420\u2192702minimum454\u2192750at480\u2192752at500/515: final travel936px, overshoot50px(~5.34%travel). Middle430\u2192435\u2192440\u2192445 displacements179/179/178px are near-linear; source does not demonstrate a physical inertial release. Main arrival near448;turn454;rest reachedby485. Boundary uncertainty~2px."
+  }
+}

@@ -264,10 +264,14 @@ class Camera:
                 break
             progress = (t-start)/max(duration,0.01)
             p = reference_camera_progress(progress) if curve == "reference" else ease_in_out(progress)
-            state = (
-                state[0] + (zoom - state[0]) * p,
-                (state[1][0] + (target[0] - state[1][0]) * p, state[1][1] + (target[1] - state[1][1]) * p),
-            )
+            next_zoom = state[0] + (zoom - state[0]) * p
+            if len(move) > 5 and move[5] == "projected":
+                # Interpolate the final image translation, preserving a shared anchored edge.
+                focus = tuple(((1-p)*state[0]*state[1][axis] + p*zoom*target[axis])/next_zoom for axis in (0,1))
+            else:
+                focus = (state[1][0] + (target[0] - state[1][0]) * p,
+                         state[1][1] + (target[1] - state[1][1]) * p)
+            state = (next_zoom, focus)
         return state
 
 
@@ -300,7 +304,9 @@ def camera_moves(spec, taps, center):
     for move in plan:
         focus = move.get("focus")
         moves.append((tap_time(move["at"], taps), float(move.get("duration", 0.9)), float(move.get("zoom", 1.0)),
-                      (float(focus[0]), float(focus[1])) if focus else None, move.get("curve", "legacy")))
+                      (float(focus[0]), float(focus[1])) if focus else None, move.get("curve", "legacy"), move.get("path", "focus")))
+        if moves[-1][5] not in ("focus", "projected"):
+            raise ValueError("Camera path must be focus or projected")
     return moves
 
 
@@ -413,8 +419,10 @@ def parse_args():
     parser.add_argument("--no-shadow", action="store_true")
     parser.add_argument("--static-background", action="store_true", help="Keep backdrop in composition space")
     parser.add_argument("--background", default="gradient", help="gradient, a #hex color, or an image file")
+    parser.add_argument("--background-video", type=Path, help="optional animated backdrop on the composition clock")
     parser.add_argument("--colors", default=",".join(DEFAULT_COLORS), help="gradient colors, comma separated hex")
     parser.add_argument("--camera", default="none", help="none, auto, or a JSON file of moves")
+    parser.add_argument("--layers", type=Path, help="optional source-linked extracted-object and glint tracks")
     parser.add_argument("--ring", default="grey", choices=["grey", "white", "telegram", "none"])
     parser.add_argument("--ring-radius", type=float, help="in screen points; reference defaults to 0.24 * screen width, legacy to 40")
     parser.add_argument("--tap-profile", choices=["legacy", "reference"], default="legacy")
@@ -442,6 +450,11 @@ def main():
     frames = round((end - start) * args.fps)
     print(f"screen {screen_size[0]}x{screen_size[1]}, offset {offset:.3f}s" + (f" (clock says {anchor:.3f}s)" if anchor is not None else "") + f", {frames} frames")
 
+    layers = None
+    if args.layers:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from layers import LayerPlan
+        layers = LayerPlan(args.layers, args.scale, screen_size)
     phone = Phone(screen_size, args.bezel, args.corner, args.scale, not args.no_shadow)
     points_w, points_h = screen_size[0] / args.scale, screen_size[1] / args.scale
     center = (points_w / 2, points_h / 2)
@@ -467,6 +480,12 @@ def main():
          "-movflags", "+faststart", str(args.out)],
         stdin=subprocess.PIPE)
 
+    bg_decode = None
+    if args.background_video:
+        bg_decode = subprocess.Popen([
+            "ffmpeg", "-loglevel", "error", "-i", str(args.background_video), "-vf",
+            f"fps={args.fps}:start_time=0,trim=start={start:.4f}:duration={frames/args.fps},setpts=PTS-STARTPTS,scale={out_w}:{out_h}",
+            "-fps_mode", "passthrough", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
     frame_bytes = screen_size[0] * screen_size[1] * 3
     try:
         for k in range(frames):
@@ -480,7 +499,12 @@ def main():
             lx, ly = phone.origin[0] + fx * args.scale, phone.origin[1] + fy * args.scale
             ox, oy = out_w / 2 - lx * scale, out_h / 2 - ly * scale
 
-            if fixed_background is not None:
+            if bg_decode is not None:
+                bg_raw = bg_decode.stdout.read(out_w*out_h*3)
+                if len(bg_raw) != out_w*out_h*3:
+                    raise RuntimeError(f"Animated background ended at frame {k}")
+                frame = Image.frombytes("RGB", (out_w,out_h), bg_raw).convert("RGBA")
+            elif fixed_background is not None:
                 frame = fixed_background.copy()
             else:
                 # The background follows the camera at a quarter of its pace.
@@ -492,7 +516,12 @@ def main():
                                        bg_size / 2 + shift_x + half_w, bg_size / 2 + shift_y + half_h)).convert("RGBA")
 
             screen = Image.frombuffer("RGB", screen_size, raw, "raw", "RGB", 0, 1)
+            if layers:
+                screen = layers.prepare_screen(screen, t)
             place(frame, phone.frame(screen), scale, ox, oy)
+            if layers:
+                project = lambda x, y: (ox + (phone.origin[0] + x * args.scale) * scale, oy + (phone.origin[1] + y * args.scale) * scale)
+                layers.draw(frame, t, project, args.scale * scale)
 
             if args.ring != "none":
                 for tap in taps:
@@ -517,6 +546,10 @@ def main():
         if decode.poll() is None:
             decode.terminate()
         decode.wait()
+        if bg_decode is not None:
+            bg_decode.stdout.close()
+            if bg_decode.poll() is None: bg_decode.terminate()
+            bg_decode.wait()
     if encode.returncode:
         raise subprocess.CalledProcessError(encode.returncode, encode.args)
     print(args.out)

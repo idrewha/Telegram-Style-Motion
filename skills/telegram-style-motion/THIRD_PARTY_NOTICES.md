@@ -14,8 +14,6 @@ It is a snapshot; no external project checkout is required at runtime.
 Pillow and NumPy are runtime dependencies installed separately with their own
 licenses. FFmpeg/ffprobe are external executables, not distributed here.
 
-The installable skill package does not include Apple device artwork, Telegram
-reference videos, application footage, audio or private project sources. The
-repository README links to a separately supplied Kino demonstration in `docs/demo/`.
-Supply assets you have permission to use.
+Apple device artwork, Telegram reference videos, application footage, audio and
+private project sources are not included. Supply assets you have permission to use.
 Telegram is a style reference; this project is not affiliated with Telegram or Apple.

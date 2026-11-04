@@ -1,0 +1,74 @@
+{
+  "status": "Five mask overlays and matching native raw anchors manually checked; bright waveform-history proxy only",
+  "parameters": {
+    "directory": "external-study-archive/review/570-0/native-event/recorder-to-preview",
+    "start": 525,
+    "end": 631,
+    "box": "140,465,438,640",
+    "exclude_x": "",
+    "min_channel": 200,
+    "max_spread": 40,
+    "anchors": "525,550,570,600,630",
+    "name": "waveform-history"
+  },
+  "samples": [
+    {
+      "frame": 525,
+      "seconds": 8.75,
+      "inkPixels": 72,
+      "left": 407,
+      "top": 540,
+      "right": 431,
+      "bottom": 565,
+      "width": 25,
+      "height": 26
+    },
+    {
+      "frame": 550,
+      "seconds": 9.166666666666666,
+      "inkPixels": 1436,
+      "left": 350,
+      "top": 476,
+      "right": 435,
+      "bottom": 627,
+      "width": 86,
+      "height": 152
+    },
+    {
+      "frame": 570,
+      "seconds": 9.5,
+      "inkPixels": 2215,
+      "left": 305,
+      "top": 477,
+      "right": 437,
+      "bottom": 627,
+      "width": 133,
+      "height": 151
+    },
+    {
+      "frame": 600,
+      "seconds": 10.0,
+      "inkPixels": 4434,
+      "left": 237,
+      "top": 477,
+      "right": 437,
+      "bottom": 628,
+      "width": 201,
+      "height": 152
+    },
+    {
+      "frame": 630,
+      "seconds": 10.5,
+      "inkPixels": 3817,
+      "left": 170,
+      "top": 477,
+      "right": 435,
+      "bottom": 628,
+      "width": 266,
+      "height": 152
+    }
+  ],
+  "limits": "Bright-ink threshold proxy only. Count/span combine glyphs, antialiasing, opacity, motion, masking and compression. Crops/exclusions may omit content. No exact keystroke, alpha, font transform, engine or network latency inferred.",
+  "finding": "Leftmost bright history moves407at525→350at550→305at570→237at600→170at630,~−135.4nativepx/s over105frames. Fixed blue playhead near440. New material is added at playhead while earlier waveform travels left; not scaling the entire waveform uniformly.",
+  "uncertainty": "Approx±2px for bright edge; threshold omits faint/antialiased bars and excludes playhead. Not audio synchronization or waveform amplitude calibration."
+}

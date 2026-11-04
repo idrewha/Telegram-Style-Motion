@@ -1,0 +1,155 @@
+{
+  "method": "Native crop160,95,385,220 normalized540\u21921920. Connected gray body maxRGB<175,min>70,range<45 seededatx390 firstdarky20:405. White warped glyphs remain holes; does not measure typography or alpha.",
+  "samples": [
+    {
+      "frame": 300,
+      "time": 5.0,
+      "left": null,
+      "top": null,
+      "right": null,
+      "bottom": null,
+      "span": 0,
+      "height": 0,
+      "area": 0
+    },
+    {
+      "frame": 301,
+      "time": 5.016666666666667,
+      "left": 387,
+      "top": 52,
+      "right": 394,
+      "bottom": 57,
+      "span": 8,
+      "height": 6,
+      "area": 26
+    },
+    {
+      "frame": 302,
+      "time": 5.033333333333333,
+      "left": 375,
+      "top": 46,
+      "right": 406,
+      "bottom": 80,
+      "span": 32,
+      "height": 35,
+      "area": 665
+    },
+    {
+      "frame": 305,
+      "time": 5.083333333333333,
+      "left": 338,
+      "top": 94,
+      "right": 450,
+      "bottom": 206,
+      "span": 113,
+      "height": 113,
+      "area": 7621
+    },
+    {
+      "frame": 310,
+      "time": 5.166666666666667,
+      "left": 247,
+      "top": 184,
+      "right": 533,
+      "bottom": 343,
+      "span": 287,
+      "height": 160,
+      "area": 34067
+    },
+    {
+      "frame": 315,
+      "time": 5.25,
+      "left": 202,
+      "top": 219,
+      "right": 594,
+      "bottom": 347,
+      "span": 393,
+      "height": 129,
+      "area": 41700
+    },
+    {
+      "frame": 320,
+      "time": 5.333333333333333,
+      "left": 123,
+      "top": 231,
+      "right": 672,
+      "bottom": 350,
+      "span": 550,
+      "height": 120,
+      "area": 55276
+    },
+    {
+      "frame": 325,
+      "time": 5.416666666666667,
+      "left": 90,
+      "top": 232,
+      "right": 689,
+      "bottom": 356,
+      "span": 600,
+      "height": 125,
+      "area": 62947
+    },
+    {
+      "frame": 330,
+      "time": 5.5,
+      "left": 88,
+      "top": 232,
+      "right": 699,
+      "bottom": 358,
+      "span": 612,
+      "height": 127,
+      "area": 64852
+    },
+    {
+      "frame": 335,
+      "time": 5.583333333333333,
+      "left": 79,
+      "top": 232,
+      "right": 702,
+      "bottom": 358,
+      "span": 624,
+      "height": 127,
+      "area": 64773
+    },
+    {
+      "frame": 340,
+      "time": 5.666666666666667,
+      "left": 80,
+      "top": 232,
+      "right": 701,
+      "bottom": 357,
+      "span": 622,
+      "height": 126,
+      "area": 65059
+    },
+    {
+      "frame": 344,
+      "time": 5.733333333333333,
+      "left": 81,
+      "top": 232,
+      "right": 700,
+      "bottom": 357,
+      "span": 620,
+      "height": 126,
+      "area": 65086
+    }
+  ],
+  "visualAudit": "All12mask-proof anchors inspected and raw301/302/310/320/335 audited.301contains tiny gray toast, not just threshold noise. Mask intentionally measures darkbody, excludes white warped glyphs and bright rim.",
+  "limits": "Threshold boundary2\u20133nativepx; early faint body can be missed. Frame300/301absence under threshold is not proof of zero opacity. Unique cylinder engine/perspective not recovered.",
+  "findings": {
+    "firstTinyBody": 301,
+    "width10_50_90Frames": [
+      303,
+      311,
+      321
+    ],
+    "maxHeight": {
+      "frame": 309,
+      "pixels": 162
+    },
+    "nearFinalHeight": 126,
+    "maxWidth": 624,
+    "lateWidth": 620,
+    "widthOvershootConclusion": "4px difference is too small relative to threshold/warping uncertainty for a strong spring overshoot claim. Height change162\u2192126 is clear; not a uniformly scaled pill."
+  }
+}
