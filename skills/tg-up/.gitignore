@@ -1,8 +1,0 @@
-**/learning/
-__pycache__/
-*.py[cod]
-.venv/
-node_modules/
-.remotion/
-dist/
-.DS_Store
