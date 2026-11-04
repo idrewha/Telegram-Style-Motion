@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare Telegram-Motion Style projects from one source-clock plan. No capture or automatic calibration."""
+"""Prepare Telegram Motion Style projects from one source-clock plan. No capture or automatic calibration."""
 import argparse
 import hashlib
 from importlib.metadata import PackageNotFoundError, version

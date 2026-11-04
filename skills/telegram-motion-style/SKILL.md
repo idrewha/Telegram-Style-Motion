@@ -4,7 +4,7 @@ description: Создавать и улучшать проморолики пр�
 license: MIT
 ---
 
-# Telegram-Motion Style
+# Telegram Motion Style
 
 Один самостоятельный скилл для записи, калибровки, монтажа и предпросмотра
 промороликов. Внутри — общая база знаний, Python-композитор и Remotion.

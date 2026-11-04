@@ -1,4 +1,4 @@
-# Telegram-Motion Style
+# Telegram Motion Style
 
 Один скилл для промороликов приложений в стиле Telegram Tips: реальная запись,
 камера V4, рамка устройства, матовые тапы и свайпы, фокусирование, блики,
@@ -14,16 +14,15 @@
 [![Превью ролика Kino](docs/demo/Kino-AI-refined.gif)](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/Kino-AI-refined.mp4)
 
 [Полный ролик](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/Kino-AI-refined.mp4)
-— 29,45 с, 1920×1920, 60 fps, без звука. Доступен пользователям репозитория.
+— 29,45 с, 1920×1920, 60 fps, без звука. Доступен для просмотра и скачивания.
 
 ## Установка
 
-Репозиторий приватный; нужен существующий доступ Git. Отправьте Codex:
+Репозиторий публичный. Для установки отправьте Codex:
 
 ```text
 $skill-installer Установи telegram-motion-style из
 https://github.com/idrewha/Telegram-Style-Motion/tree/main/skills/telegram-motion-style
-Используй существующий доступ Git к приватному репозиторию.
 ```
 
 При ручной установке скопируйте единственную папку `skills/telegram-motion-style`
