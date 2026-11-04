@@ -47,10 +47,11 @@ def parse_color(text):
 
 # Recording ------------------------------------------------------------------------
 
-def probe(video):
-    """Size in pixels and every frame's time, as the recording is variable frame rate."""
+def probe(video, timestamps=True):
+    """Size in pixels, with optional frame times for legacy VFR synchronization."""
     out = subprocess.run(
-        ["ffprobe", "-loglevel", "error", "-select_streams", "v", "-show_entries", "stream=width,height:frame=pts_time",
+        ["ffprobe", "-loglevel", "error", "-select_streams", "v", "-show_entries",
+         "stream=width,height" + (":frame=pts_time" if timestamps else ""),
          "-of", "csv=p=0", str(video)],
         capture_output=True, text=True, check=True).stdout.replace(",", " ").split("\n")
     size = None
@@ -125,6 +126,33 @@ def sync_offset(taps, onsets, anchor=None):
 
 # Phone ----------------------------------------------------------------------------
 
+def screen_hole(alpha):
+    """Four-connected transparent component at center, filled by horizontal spans.
+
+    Pillow's Python pixel-by-pixel floodfill dominates setup for full-size bezels.
+    NumPy finds span boundaries without visiting each pixel in Python.
+    """
+    height, width = alpha.shape
+    available = alpha < 250
+    filled = np.zeros_like(available)
+    pending = [(height // 2, width // 2)]
+    while pending:
+        y, x = pending.pop()
+        if filled[y, x] or not available[y, x]:
+            continue
+        blocked = np.flatnonzero(~available[y])
+        index = np.searchsorted(blocked, x)
+        left = int(blocked[index - 1]) + 1 if index else 0
+        right = int(blocked[index]) if index < len(blocked) else width
+        filled[y, left:right] = True
+        for adjacent in (y - 1, y + 1):
+            if 0 <= adjacent < height:
+                row = available[adjacent, left:right] & ~filled[adjacent, left:right]
+                starts = np.flatnonzero(row & ~np.r_[False, row[:-1]])
+                pending.extend((adjacent, left + int(start)) for start in starts)
+    return filled
+
+
 class Phone:
     """The bezel around the recording: a PNG with a transparent screen hole, scaled so the
     hole matches the recording, or a plain drawn one. Holds the layer under the screen
@@ -160,9 +188,7 @@ class Phone:
         cy, cx = source.height // 2, source.width // 2
         if alpha[cy, cx] > 127:
             sys.exit("The bezel's screen must be transparent in the middle of the image")
-        hole = Image.fromarray(np.where(alpha < 250, 255, 0).astype(np.uint8), "L").copy()
-        ImageDraw.floodfill(hole, (cx, cy), 128)
-        hole = np.asarray(hole) == 128
+        hole = screen_hole(alpha)
         ys, xs = np.where(hole)
         left, top, right, bottom = xs.min(), ys.min(), xs.max() + 1, ys.max() + 1
         # Bring the bezel to the recording's scale, so the hole is the screen's size.
@@ -439,14 +465,18 @@ def main():
     out_w, out_h = (int(v) for v in args.size.lower().split("x"))
     video = args.take / "rec.mp4"
     taps, started = load_timeline(args.take / "taps.json")
-    screen_size, pts = probe(video)
-    anchor = started - first_frame_wall_time(video, pts[-1]) if started else None
+    # Explicit calibrated timing needs only dimensions here. render.py has
+    # already checked every input PTS; preserve the full probe for legacy sync.
+    screen_size, pts = probe(video, timestamps=args.offset is None or args.end is None)
+    anchor = started - first_frame_wall_time(video, pts[-1]) if started and pts else None
     offset = args.offset if args.offset is not None else sync_offset(taps, change_onsets(video, pts), anchor)
 
     start = (taps[0]["time"] if taps else 0) - args.lead
-    end = (taps[-1]["time"] if taps else pts[-1] - offset) + args.tail
     start = args.start if args.start is not None else start
-    end = args.end if args.end is not None else end
+    if args.end is not None:
+        end = args.end
+    else:
+        end = (taps[-1]["time"] if taps else pts[-1] - offset) + args.tail
     frames = round((end - start) * args.fps)
     print(f"screen {screen_size[0]}x{screen_size[1]}, offset {offset:.3f}s" + (f" (clock says {anchor:.3f}s)" if anchor is not None else "") + f", {frames} frames")
 
@@ -464,14 +494,17 @@ def main():
     # Output pixels per screen point in the wide shot.
     wide = out_h * args.share / (phone.body_height / args.scale)
 
-    colors = [parse_color(c) for c in args.colors.split(",")]
-    bg = background(args.background, colors, (out_w, out_h))
-    bg_size = bg.width
-    fixed_background = bg.resize((out_w,out_h),Image.BICUBIC).convert("RGBA") if args.static_background else None
+    fixed_background = None
+    if not args.background_video:
+        colors = [parse_color(c) for c in args.colors.split(",")]
+        bg = background(args.background, colors, (out_w, out_h))
+        bg_size = bg.width
+        if args.static_background:
+            fixed_background = bg.resize((out_w,out_h),Image.BICUBIC).convert("RGBA")
 
     decode = subprocess.Popen(
         ["ffmpeg", "-loglevel", "error", "-i", str(video), "-vf",
-         f"fps={args.fps}:start_time=0,trim=start={max(0, start + offset):.4f}:duration={frames / args.fps + 1},setpts=PTS-STARTPTS",
+         f"fps={args.fps}:start_time=0,trim=start={max(0, start + offset):.4f}:duration={frames / args.fps},setpts=PTS-STARTPTS",
          "-fps_mode", "passthrough", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
         stdout=subprocess.PIPE)
     encode = subprocess.Popen(

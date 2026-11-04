@@ -41,6 +41,8 @@ class LayerPlan:
                     if source.mode != 'RGBA':
                         raise ValueError('Sprite and repair require RGBA PNG artwork/masks')
                     track[field] = source.copy()
+                track['repair'] = track['repair'].resize(
+                    (round(w*self.scale), round(h*self.scale)), Image.Resampling.LANCZOS)
                 if track.get('exitCurve', 'smooth') not in ('smooth', 'settle'):
                     raise ValueError('Sprite exitCurve must be smooth or settle')
                 sheen = track.get('sheen')
@@ -121,9 +123,7 @@ class LayerPlan:
         result = screen.convert('RGBA')
         for track, p in active:
             x,y,w,h = track['screenRect']
-            size = (round(w*self.scale),round(h*self.scale))
-            repair = track['repair'].resize(size,Image.Resampling.LANCZOS)
-            result.alpha_composite(repair,(round(x*self.scale),round(y*self.scale)))
+            result.alpha_composite(track['repair'],(round(x*self.scale),round(y*self.scale)))
             dim = track.get('dim',0)*max(0,p)
             if dim:
                 shade=Image.new('RGBA',result.size,(0,0,0,round(255*dim)))
