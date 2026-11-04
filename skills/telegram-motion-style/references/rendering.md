@@ -21,6 +21,11 @@ After a multi-input `concat` filter, explicitly set output `-r 60 -fps_mode cfr`
 
 Do not normalize a second time after calibrating. Verify initial PTS and frame
 spacing. Keep the same frame sequence for detection, cleaning, composition and audit.
+Passing a metadata/CFR check alone does not establish that normalization preserved
+native animation. Compare critical raw and normalized motion before calibration.
+Earlier Simulator sources had duplicate PTS and decoder fallback to DTS that lost
+parts of typing/holds. Input `-fflags +igndts` helped those particular sources;
+use it only after demonstrating that failure, not as a universal normalization flag.
 
 For a VFR source, apply `fps` before trimming, or normalize the entire recording
 first. Seeking with `-ss` and then resetting the first decoded frame to PTS zero
@@ -145,7 +150,7 @@ four-point glints. Existing projects need no new argument. The schema is:
   {"type": "sprite", "asset": "button.png", "repair": "clean-plate.png",
    "screenRect": [24, 768, 44, 44], "start": 2.6,
    "enter": 0.24, "hold": 0.32, "exit": 0.28,
-   "scale": 1.6, "offset": [-0.07, -0.02], "dim": 0.18},
+   "scale": 1.6, "offset": [0, 0], "dim": 0.18},
   {"type": "glint", "anchor": [55, 778], "start": 4.1,
    "duration": 0.35, "radius": 4}
 ]}
@@ -186,13 +191,17 @@ from audible onset. Do not add unrelated music.
 Check output metadata, expected frame count and full decode, for example:
 
 ```sh
-ffprobe -v error -count_frames -select_streams v:0 \
-  -show_entries stream=codec_name,width,height,r_frame_rate,nb_read_frames \
+ffprobe -v error -select_streams v:0 \
+  -show_entries stream=codec_name,width,height,r_frame_rate,nb_frames \
   -of json /path/to/final.mp4
 ffmpeg -v error -xerror -i /path/to/final.mp4 -f null -
 ```
 
 Inspect extracted source/final contact frames as described in registration.md.
+MP4 `nb_frames` is header metadata; the separate error-checked decode verifies
+integrity. Use a counted decode only when the container lacks a reliable frame
+count; avoid decoding the entire same file twice just to repeat this check.
+
 Metadata and synthetic tests alone do not validate live-app UI alignment. Save
 camera JSON, trim bounds, scale, background, frame anchors and actual checks with
 each deliverable. No app UI test or live verification pass is required by this package.

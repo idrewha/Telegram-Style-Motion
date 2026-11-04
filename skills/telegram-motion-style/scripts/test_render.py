@@ -80,6 +80,15 @@ class RenderTests(unittest.TestCase):
         self.assertIn("exceeds recorded frames", result.stderr)
         self.assertFalse(self.out.exists())
 
+    def test_explicit_trim_without_contacts_or_legacy_sync(self):
+        (self.root / 'taps.json').write_text(json.dumps({'taps': [], 'started': 123}))
+        result = self.render('--start', str(1/60))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        stream = json.loads(subprocess.check_output([
+            'ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries',
+            'stream=nb_frames', '-of', 'json', str(self.out)], text=True))['streams'][0]
+        self.assertEqual(int(stream['nb_frames']), 59)
+
     def test_wrong_frame_rate_is_rejected_before_rendering(self):
         result = self.render("--fps", "30")
         self.assertNotEqual(result.returncode, 0)

@@ -2,6 +2,7 @@
 """Prepare Telegram-Motion Style projects from one source-clock plan. No capture or automatic calibration."""
 import argparse
 import hashlib
+from importlib.metadata import PackageNotFoundError, version
 import json
 import math
 import shutil
@@ -34,6 +35,18 @@ def digest_file(p):
         for chunk in iter(lambda: f.read(1024 * 1024), b''):
             h.update(chunk)
     return h.hexdigest()
+
+
+def renderer_fingerprint():
+    files = ['motion.py', 'render.py', 'vendor/compose.py', 'layers.py',
+             'gestures.py', 'motion_profile.py']
+    result = {name: digest_file(ROOT / 'scripts' / name) for name in files}
+    for package in ('Pillow', 'numpy'):
+        try:
+            result[package] = version(package)
+        except PackageNotFoundError:
+            result[package] = None
+    return result
 
 
 def compile_plan(path):
@@ -117,6 +130,7 @@ def compile_plan(path):
     camera.sort(key=lambda c: c['at'])
     require(all(a['at'] + a['duration'] <= b['at'] + 1e-8 for a, b in zip(camera, camera[1:])), 'Overlapping camera moves')
     b = dict(p['base'])
+    muted = b.pop('muted', True)
     b['take'] = str((root / b['take']).resolve())
     b['bezel'] = str(resolve_file(root, b['bezel']))
     require(number(b.get('scale')) and b['scale'] > 0, 'base.scale must be actual recording pixels per point')
@@ -133,9 +147,10 @@ def compile_plan(path):
     for key in ('background', 'backgroundVideo'):
         if key in b and Path(b[key]).is_file():
             fingerprints[b[key]] = digest_file(Path(b[key]))
-    signature = hashlib.sha256(json.dumps([b, start, end, fps, size, taps, camera, layers, fingerprints], sort_keys=True).encode()).hexdigest()
+    signature = hashlib.sha256(json.dumps([b, start, end, fps, size, taps, camera, layers,
+                                          fingerprints, renderer_fingerprint()], sort_keys=True).encode()).hexdigest()
     return {'width': size[0], 'height': size[1], 'fps': fps, 'durationInFrames': count,
-            'base': {'src': 'base.mp4', 'muted': b.get('muted', True)}, 'texts': texts, 'audio': audio}, \
+            'base': {'src': 'base.mp4', 'muted': muted}, 'texts': texts, 'audio': audio}, \
         {'config': b, 'start': start, 'end': end, 'taps': taps, 'camera': camera, 'layers': layers, 'signature': signature}
 
 
@@ -143,7 +158,7 @@ def probe(path):
     return json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_streams', '-of', 'json', str(path)], text=True))['streams']
 
 
-def prepare(plan, project, render_base=False):
+def prepare(plan, project, render_base=False, force_base=False):
     props, base = compile_plan(plan)
     require((project / 'package.json').is_file(), 'Initialize project first')
     generated = project / 'generated'
@@ -152,7 +167,20 @@ def prepare(plan, project, render_base=False):
     public.mkdir(exist_ok=True)
     output = public / 'base.mp4'
     stamp = generated / 'base-signature.json'
-    if render_base:
+    # Validate audio before starting the expensive video pass.
+    audio_sources = []
+    for index, audio in enumerate(props['audio']):
+        src = Path(audio.pop('_source'))
+        streams = [s for s in probe(src) if s['codec_type'] == 'audio']
+        require(streams, 'Audio asset has no audio stream')
+        needed = (audio['trimBefore'] + audio['duration']) / props['fps']
+        require(float(streams[0].get('duration', 0)) + 1/props['fps'] >= needed, 'Audio asset ends before planned clip')
+        name = 'audio-' + str(index) + src.suffix.lower()
+        audio_sources.append((src, public / name))
+        audio['src'] = name
+    matches = (not force_base and output.is_file() and stamp.is_file()
+               and json.loads(stamp.read_text()).get('signature') == base['signature'])
+    if force_base or (render_base and not matches):
         # Use a derived take: never overwrite calibrated source taps.json.
         take = generated / 'take'
         take.mkdir(exist_ok=True)
@@ -178,6 +206,8 @@ def prepare(plan, project, render_base=False):
         subprocess.run(cmd, check=True)
         pending.replace(output)
         stamp.write_text(json.dumps({'signature': base['signature']}))
+    elif matches:
+        print('Reusing base:', output)
     require(output.is_file() and stamp.is_file(), 'Run prepare with --render-base first')
     require(json.loads(stamp.read_text())['signature'] == base['signature'], 'Base inputs changed; rerun with --render-base')
     video = next(s for s in probe(output) if s['codec_type'] == 'video')
@@ -185,15 +215,8 @@ def prepare(plan, project, render_base=False):
     require(int(video['width']) == props['width'] and int(video['height']) == props['height']
             and Fraction(video['r_frame_rate']) == props['fps']
             and int(video.get('nb_frames', -1)) == props['durationInFrames'], 'Base media does not match plan')
-    for index, audio in enumerate(props['audio']):
-        src = Path(audio.pop('_source'))
-        streams = [s for s in probe(src) if s['codec_type'] == 'audio']
-        require(streams, 'Audio asset has no audio stream')
-        needed = (audio['trimBefore'] + audio['duration']) / props['fps']
-        require(float(streams[0].get('duration', 0)) + 1/props['fps'] >= needed, 'Audio asset ends before planned clip')
-        name = 'audio-' + str(index) + src.suffix.lower()
-        shutil.copy2(src, public / name)
-        audio['src'] = name
+    for src, target in audio_sources:
+        shutil.copy2(src, target)
     (project / 'props.json').write_text(json.dumps(props, ensure_ascii=False, indent=2))
     shutil.copy2(plan, generated / 'plan.snapshot.json')
     print('Prepared:', project, 'frames:', props['durationInFrames'])
@@ -208,6 +231,7 @@ def main():
     prep.add_argument('plan', type=Path)
     prep.add_argument('project', type=Path)
     prep.add_argument('--render-base', action='store_true')
+    prep.add_argument('--force-base', action='store_true', help='Render even when the base signature matches')
     check = sub.add_parser('check')
     check.add_argument('plan', type=Path)
     args = parser.parse_args()
@@ -221,7 +245,7 @@ def main():
             props, base = compile_plan(args.plan)
             print(json.dumps({'frames': props['durationInFrames'], 'baseSignature': base['signature'], 'textTracks': len(props['texts']), 'audioTracks': len(props['audio'])}))
         else:
-            prepare(args.plan.resolve(), args.project.resolve(), args.render_base)
+            prepare(args.plan.resolve(), args.project.resolve(), args.render_base, args.force_base)
     except (ValueError, KeyError, TypeError, OSError, subprocess.CalledProcessError, StopIteration) as error:
         parser.exit(1, str(error) + '\n')
 

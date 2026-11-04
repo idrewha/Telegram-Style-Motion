@@ -6,7 +6,7 @@
   "scripts": {
     "studio": "remotion studio src/index.jsx --props=props.json",
     "render": "node scripts/render.mjs",
-    "test": "node --test scripts/test-text.mjs"
+    "test": "node --test scripts/test-*.mjs"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.540",

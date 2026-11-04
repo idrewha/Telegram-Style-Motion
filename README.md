@@ -43,6 +43,12 @@ https://github.com/idrewha/Telegram-Style-Motion/tree/main/skills/telegram-motio
 Pillow/NumPy и FFmpeg/ffprobe. Remotion дополнительно требует Node.js и npm.
 Обязательных MCP-сервисов нет. Координаты и контакты калибруются по вашему исходнику.
 
+Для камеры, рамки, тапов и объектных акцентов достаточно прямого Python-рендера.
+Remotion подключается для Studio и редакционных дорожек. `--render-base`
+переиспользует неизменившуюся базу; `--force-base` пересчитывает её принудительно.
+Экспорт без текстовых и звуковых дорожек копирует базовый MP4 без браузера
+и повторного кодирования.
+
 Из папки скилла:
 
 ```sh
@@ -81,7 +87,7 @@ npm ci
 ```sh
 python3 -m unittest discover -s skills/telegram-motion-style/scripts -p 'test_*.py' -v
 node --test skills/telegram-motion-style/scripts/test_text_motion.mjs
-node --test skills/telegram-motion-style/assets/remotion/scripts/test-text.mjs
+node --test skills/telegram-motion-style/assets/remotion/scripts/test-*.mjs
 ```
 
 Тесты не запускают UI приложения. При изменении структуры отдельно проверяются

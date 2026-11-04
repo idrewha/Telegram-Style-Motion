@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location('telegram_motion', Path(__file__).with_name('motion.py'))
 module = importlib.util.module_from_spec(spec)
@@ -55,6 +56,57 @@ class PlanTests(unittest.TestCase):
         (self.root / 'take/rec.mp4').write_bytes(b'new-recording')
         _, changed = self.compile()
         self.assertNotEqual(old['signature'], changed['signature'])
+
+    def test_renderer_changes_invalidate_base(self):
+        with patch.object(module, 'renderer_fingerprint', return_value={'renderer': 'old'}):
+            _, old = self.compile()
+        with patch.object(module, 'renderer_fingerprint', return_value={'renderer': 'new'}):
+            _, new = self.compile()
+        self.assertNotEqual(old['signature'], new['signature'])
+
+    def test_repeated_prepare_reuses_base_and_force_rebuilds(self):
+        self.compile()
+        plan = self.root / 'plan.json'
+        project = self.root / 'project'
+        project.mkdir()
+        (project / 'package.json').write_text('{}')
+
+        def render(command, **kwargs):
+            Path(command[3]).write_bytes(b'rendered-base')
+
+        def probe(path):
+            if path.suffix == '.wav':
+                return [{'codec_type': 'audio', 'duration': '1'}]
+            return [{'codec_type': 'video', 'width': 1920, 'height': 1920,
+                     'r_frame_rate': '60/1', 'nb_frames': '240'}]
+
+        with patch.object(module.subprocess, 'run', side_effect=render) as renderer, \
+                patch.object(module, 'probe', side_effect=probe):
+            module.prepare(plan, project, render_base=True)
+            self.assertEqual(renderer.call_count, 1)
+            self.plan['groups'][0]['events'][2]['text'] = 'Правка текста'
+            self.compile()
+            module.prepare(plan, project, render_base=True)
+            self.assertEqual(renderer.call_count, 1)
+            props = json.loads((project / 'props.json').read_text())
+            self.assertEqual(props['texts'][0]['text'], 'Правка текста')
+            self.assertEqual((project / 'public/base.mp4').read_bytes(), b'rendered-base')
+            (self.root / 'take/rec.mp4').write_bytes(b'changed-source')
+            module.prepare(plan, project, render_base=True)
+            self.assertEqual(renderer.call_count, 2)
+            module.prepare(plan, project, force_base=True)
+            self.assertEqual(renderer.call_count, 3)
+        self.assertEqual((self.root / 'take/taps.json').read_text(), 'original calibrated taps')
+
+    def test_bad_audio_fails_before_video_render(self):
+        self.compile()
+        project = self.root / 'project'
+        project.mkdir()
+        (project / 'package.json').write_text('{}')
+        with patch.object(module, 'probe', return_value=[]), patch.object(module.subprocess, 'run') as renderer:
+            with self.assertRaisesRegex(ValueError, 'no audio stream'):
+                module.prepare(self.root / 'plan.json', project, render_base=True)
+            renderer.assert_not_called()
 
     def test_duplicate_contacts_rejected(self):
         self.plan['groups'][0]['events'].append({'id': 'duplicate', 'type': 'tap', 'at': .2, 'x': 0, 'y': 0})
