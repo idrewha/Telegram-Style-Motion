@@ -12,7 +12,7 @@ __pycache__/
 *.wav
 
 # Published README demonstration
-!docs/demo/Kino-AI-refined.mp4
+!docs/demo/Dynamic-Final.mp4
 
 # Remotion workspaces and local render caches
 node_modules/
