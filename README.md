@@ -7,14 +7,7 @@
 Всё находится в [skills/telegram-motion-style](skills/telegram-motion-style/SKILL.md).
 Одна база знаний, один набор инструментов, одна установка.
 
-## Демонстрация
-
-Проморолик AI-поиска Kino: реальная запись приложения, камера V4 и матовые тапы.
-
-[![Превью ролика Kino](docs/demo/Kino-AI-refined.gif)](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/Kino-AI-refined.mp4)
-
-[Полный ролик](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/Kino-AI-refined.mp4)
-— 29,45 с, 1920×1920, 60 fps, без звука. Доступен для просмотра и скачивания.
+[![Превью ролика](docs/demo/Dynamic-Final.gif)](https://github.com/idrewha/Telegram-Style-Motion/raw/refs/heads/main/docs/demo/Dynamic-Final.mp4)
 
 ## Установка
 
